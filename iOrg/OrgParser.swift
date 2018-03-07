@@ -1,0 +1,15 @@
+//
+//  OrgParser.swift
+//  iOrg
+//
+//  Created by Garrett Davidson on 3/7/18.
+//  Copyright © 2018 Garrett Davidson. All rights reserved.
+//
+
+import Foundation
+
+class OrgParser {
+    static func parse(file: OrgFile) {
+
+    }
+}

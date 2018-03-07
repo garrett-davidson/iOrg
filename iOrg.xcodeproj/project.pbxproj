@@ -14,6 +14,11 @@
 		680FBCA4205033B3005C777B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 680FBCA2205033B3005C777B /* LaunchScreen.storyboard */; };
 		680FBCAF205033B3005C777B /* iOrgTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680FBCAE205033B3005C777B /* iOrgTests.swift */; };
 		680FBCBA205033B3005C777B /* iOrgUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680FBCB9205033B3005C777B /* iOrgUITests.swift */; };
+		680FBCC820503B5B005C777B /* OrgParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680FBCC720503B5B005C777B /* OrgParser.swift */; };
+		680FBCCA20503BD9005C777B /* OrgFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680FBCC920503BD9005C777B /* OrgFile.swift */; };
+		680FBCCC20503CED005C777B /* OrgFileComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680FBCCB20503CED005C777B /* OrgFileComponent.swift */; };
+		680FBCCF20503E01005C777B /* OrgTODOComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680FBCCE20503E01005C777B /* OrgTODOComponent.swift */; };
+		680FBCD1205044FC005C777B /* OrgHeadlineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680FBCD0205044FC005C777B /* OrgHeadlineComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +52,11 @@
 		680FBCB5205033B3005C777B /* iOrgUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOrgUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		680FBCB9205033B3005C777B /* iOrgUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOrgUITests.swift; sourceTree = "<group>"; };
 		680FBCBB205033B3005C777B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		680FBCC720503B5B005C777B /* OrgParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgParser.swift; sourceTree = "<group>"; };
+		680FBCC920503BD9005C777B /* OrgFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgFile.swift; sourceTree = "<group>"; };
+		680FBCCB20503CED005C777B /* OrgFileComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgFileComponent.swift; sourceTree = "<group>"; };
+		680FBCCE20503E01005C777B /* OrgTODOComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgTODOComponent.swift; sourceTree = "<group>"; };
+		680FBCD0205044FC005C777B /* OrgHeadlineComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgHeadlineComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +108,14 @@
 			isa = PBXGroup;
 			children = (
 				680FBC99205033B3005C777B /* AppDelegate.swift */,
-				680FBC9B205033B3005C777B /* ViewController.swift */,
-				680FBC9D205033B3005C777B /* Main.storyboard */,
 				680FBCA0205033B3005C777B /* Assets.xcassets */,
-				680FBCA2205033B3005C777B /* LaunchScreen.storyboard */,
 				680FBCA5205033B3005C777B /* Info.plist */,
+				680FBCA2205033B3005C777B /* LaunchScreen.storyboard */,
+				680FBC9D205033B3005C777B /* Main.storyboard */,
+				680FBCC920503BD9005C777B /* OrgFile.swift */,
+				680FBCCD20503DA0005C777B /* OrgFileComponents */,
+				680FBCC720503B5B005C777B /* OrgParser.swift */,
+				680FBC9B205033B3005C777B /* ViewController.swift */,
 			);
 			path = iOrg;
 			sourceTree = "<group>";
@@ -123,6 +136,16 @@
 				680FBCBB205033B3005C777B /* Info.plist */,
 			);
 			path = iOrgUITests;
+			sourceTree = "<group>";
+		};
+		680FBCCD20503DA0005C777B /* OrgFileComponents */ = {
+			isa = PBXGroup;
+			children = (
+				680FBCCB20503CED005C777B /* OrgFileComponent.swift */,
+				680FBCD0205044FC005C777B /* OrgHeadlineComponent.swift */,
+				680FBCCE20503E01005C777B /* OrgTODOComponent.swift */,
+			);
+			path = OrgFileComponents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +282,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				680FBCCF20503E01005C777B /* OrgTODOComponent.swift in Sources */,
+				680FBCCA20503BD9005C777B /* OrgFile.swift in Sources */,
+				680FBCC820503B5B005C777B /* OrgParser.swift in Sources */,
+				680FBCD1205044FC005C777B /* OrgHeadlineComponent.swift in Sources */,
+				680FBCCC20503CED005C777B /* OrgFileComponent.swift in Sources */,
 				680FBC9C205033B3005C777B /* ViewController.swift in Sources */,
 				680FBC9A205033B3005C777B /* AppDelegate.swift in Sources */,
 			);
