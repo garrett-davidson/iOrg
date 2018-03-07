@@ -9,11 +9,11 @@
 import Foundation
 
 class OrgFile {
-    let fileName: String
+    let path: URL
     var isParsed = false
     var components = [OrgFileComponent]()
 
-    init(file: String) {
-        self.fileName = file
+    init(file: URL) {
+        self.path = file
     }
 }
