@@ -18,7 +18,7 @@
 		680FBCCA20503BD9005C777B /* OrgFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680FBCC920503BD9005C777B /* OrgFile.swift */; };
 		680FBCCC20503CED005C777B /* OrgFileComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680FBCCB20503CED005C777B /* OrgFileComponent.swift */; };
 		680FBCCF20503E01005C777B /* OrgTODOComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680FBCCE20503E01005C777B /* OrgTODOComponent.swift */; };
-		680FBCD1205044FC005C777B /* OrgHeadlineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680FBCD0205044FC005C777B /* OrgHeadlineComponent.swift */; };
+		680FBCD1205044FC005C777B /* OrgHeadingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680FBCD0205044FC005C777B /* OrgHeadingComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +56,7 @@
 		680FBCC920503BD9005C777B /* OrgFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgFile.swift; sourceTree = "<group>"; };
 		680FBCCB20503CED005C777B /* OrgFileComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgFileComponent.swift; sourceTree = "<group>"; };
 		680FBCCE20503E01005C777B /* OrgTODOComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgTODOComponent.swift; sourceTree = "<group>"; };
-		680FBCD0205044FC005C777B /* OrgHeadlineComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgHeadlineComponent.swift; sourceTree = "<group>"; };
+		680FBCD0205044FC005C777B /* OrgHeadingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgHeadingComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				680FBCCB20503CED005C777B /* OrgFileComponent.swift */,
-				680FBCD0205044FC005C777B /* OrgHeadlineComponent.swift */,
+				680FBCD0205044FC005C777B /* OrgHeadingComponent.swift */,
 				680FBCCE20503E01005C777B /* OrgTODOComponent.swift */,
 			);
 			path = OrgFileComponents;
@@ -285,7 +285,7 @@
 				680FBCCF20503E01005C777B /* OrgTODOComponent.swift in Sources */,
 				680FBCCA20503BD9005C777B /* OrgFile.swift in Sources */,
 				680FBCC820503B5B005C777B /* OrgParser.swift in Sources */,
-				680FBCD1205044FC005C777B /* OrgHeadlineComponent.swift in Sources */,
+				680FBCD1205044FC005C777B /* OrgHeadingComponent.swift in Sources */,
 				680FBCCC20503CED005C777B /* OrgFileComponent.swift in Sources */,
 				680FBC9C205033B3005C777B /* ViewController.swift in Sources */,
 				680FBC9A205033B3005C777B /* AppDelegate.swift in Sources */,

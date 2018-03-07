@@ -11,8 +11,8 @@ import XCTest
 
 class iOrgTests: XCTestCase {
     func testPolymorphicEquality() {
-        var left = OrgHeadlineComponent(title: "My title")
-        var right = OrgHeadlineComponent(title: "My title")
+        var left = OrgHeadingComponent(title: "My title")
+        var right = OrgHeadingComponent(title: "My title")
         XCTAssertEqual(left, right)
 
         left = OrgTODOComponent(title: "Stuff", state: .TODO, closeDate: nil)
@@ -36,7 +36,7 @@ class iOrgTests: XCTestCase {
         right = OrgTODOComponent(title: "Stuff", state: .Custom("Other"), closeDate: nil)
         XCTAssertNotEqual(left, right)
 
-        left = OrgHeadlineComponent(title: "Stuff")
+        left = OrgHeadingComponent(title: "Stuff")
         right = OrgTODOComponent(title: "Stuff", state: .DONE, closeDate: nil)
         XCTAssertNotEqual(left, right)
 

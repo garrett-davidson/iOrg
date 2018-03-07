@@ -8,7 +8,7 @@
 
 import Foundation
 
-class OrgTODOComponent: OrgHeadlineComponent {
+class OrgTODOComponent: OrgHeadingComponent {
     enum OrgTODOState: Equatable {
         case TODO
         case DONE

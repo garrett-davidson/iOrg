@@ -8,7 +8,7 @@
 
 import Foundation
 
-class OrgHeadlineComponent: OrgFileComponent {
+class OrgHeadingComponent: OrgFileComponent {
     var title: String
 
     init(title: String) {
@@ -17,7 +17,7 @@ class OrgHeadlineComponent: OrgFileComponent {
     }
 
     override func isEqual(to other: OrgFileComponent) -> Bool {
-        guard let other = other as? OrgHeadlineComponent else {
+        guard let other = other as? OrgHeadingComponent else {
             assertionFailure("Should not be able to be run")
             return false
         }
