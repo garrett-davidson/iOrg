@@ -30,11 +30,11 @@ class OrgTODOComponent: OrgHeadingComponent {
     var state: OrgTODOState
     var closeDate: Date?
 
-    init(title: String, state: OrgTODOState, closeDate: Date? = nil) {
+    init(title: String, headingLevel: Int, state: OrgTODOState, closeDate: Date? = nil) {
         self.state = state
         self.closeDate = closeDate
 
-        super.init(title: title)
+        super.init(title: title, headingLevel: headingLevel)
     }
 
     override func isEqual(to other: OrgFileComponent) -> Bool {

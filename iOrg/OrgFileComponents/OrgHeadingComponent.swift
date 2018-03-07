@@ -10,9 +10,11 @@ import Foundation
 
 class OrgHeadingComponent: OrgFileComponent {
     var title: String
+    var headingLevel: Int
 
-    init(title: String) {
+    init(title: String, headingLevel: Int) {
         self.title = title
+        self.headingLevel = headingLevel
         super.init()
     }
 
