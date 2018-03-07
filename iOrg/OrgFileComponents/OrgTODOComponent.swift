@@ -30,7 +30,7 @@ class OrgTODOComponent: OrgHeadlineComponent {
     var state: OrgTODOState
     var closeDate: Date?
 
-    init(title: String, state: OrgTODOState, closeDate: Date?) {
+    init(title: String, state: OrgTODOState, closeDate: Date? = nil) {
         self.state = state
         self.closeDate = closeDate
 
@@ -39,6 +39,7 @@ class OrgTODOComponent: OrgHeadlineComponent {
 
     override func isEqual(to other: OrgFileComponent) -> Bool {
         guard let other = other as? OrgTODOComponent else {
+            assertionFailure("Should not be able to be run")
             return false
         }
 

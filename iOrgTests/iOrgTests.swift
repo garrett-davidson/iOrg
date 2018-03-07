@@ -10,27 +10,63 @@ import XCTest
 @testable import iOrg
 
 class iOrgTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testPolymorphicEquality() {
+        var left = OrgHeadlineComponent(title: "My title")
+        var right = OrgHeadlineComponent(title: "My title")
+        XCTAssertEqual(left, right)
+
+        left = OrgTODOComponent(title: "Stuff", state: .TODO, closeDate: nil)
+        right = OrgTODOComponent(title: "Stuff", state: .TODO, closeDate: nil)
+        XCTAssertEqual(left, right)
+
+        left = OrgTODOComponent(title: "Stuff", state: .Custom("In progress"), closeDate: nil)
+        right = OrgTODOComponent(title: "Stuff", state: .Custom("In progress"), closeDate: nil)
+        XCTAssertEqual(left, right)
+
+        let now = Date()
+        left = OrgTODOComponent(title: "Stuff", state: .Custom("In progress"), closeDate: now)
+        right = OrgTODOComponent(title: "Stuff", state: .Custom("In progress"), closeDate: now)
+        XCTAssertEqual(left, right)
+
+        left = OrgTODOComponent(title: "Stuff", state: .TODO, closeDate: nil)
+        right = OrgTODOComponent(title: "Stuff", state: .DONE, closeDate: nil)
+        XCTAssertNotEqual(left, right)
+
+        left = OrgTODOComponent(title: "Stuff", state: .Custom("In progress"), closeDate: nil)
+        right = OrgTODOComponent(title: "Stuff", state: .Custom("Other"), closeDate: nil)
+        XCTAssertNotEqual(left, right)
+
+        left = OrgHeadlineComponent(title: "Stuff")
+        right = OrgTODOComponent(title: "Stuff", state: .DONE, closeDate: nil)
+        XCTAssertNotEqual(left, right)
+
+        let notNow = Date(timeIntervalSince1970: 0)
+        left = OrgTODOComponent(title: "Stuff", state: .Custom("In progress"), closeDate: now)
+        right = OrgTODOComponent(title: "Stuff", state: .Custom("In progress"), closeDate: notNow)
+        XCTAssertNotEqual(left, right)
+
+        left = OrgTODOComponent(title: "Stuff", state: .Custom("In progress"), closeDate: nil)
+        right = OrgTODOComponent(title: "Stuff", state: .Custom("In progress"), closeDate: nil)
+        var leftChild = OrgTODOComponent(title: "Kid stuff", state: .TODO, closeDate: nil)
+        var rightChild = OrgTODOComponent(title: "Kid stuff", state: .TODO, closeDate: nil)
+        left.children = [leftChild]
+        right.children = [rightChild]
+        XCTAssertEqual(left, right)
+
+        left = OrgTODOComponent(title: "Stuff", state: .Custom("In progress"), closeDate: nil)
+        right = OrgTODOComponent(title: "Stuff", state: .Custom("In progress"), closeDate: nil)
+        leftChild = OrgTODOComponent(title: "Kid stuff", state: .TODO, closeDate: nil)
+        rightChild = OrgTODOComponent(title: "Kid stuff", state: .TODO, closeDate: nil)
+        left.children = [leftChild, leftChild]
+        right.children = [rightChild]
+        XCTAssertNotEqual(left, right)
+
+        left = OrgTODOComponent(title: "Stuff", state: .Custom("In progress"), closeDate: nil)
+        right = OrgTODOComponent(title: "Stuff", state: .Custom("In progress"), closeDate: nil)
+        leftChild = OrgTODOComponent(title: "Big kid stuff", state: .TODO, closeDate: nil)
+        rightChild = OrgTODOComponent(title: "Kid stuff", state: .TODO, closeDate: nil)
+        left.children = [leftChild]
+        right.children = [rightChild]
+        XCTAssertNotEqual(left, right)
     }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }

@@ -18,6 +18,7 @@ class OrgHeadlineComponent: OrgFileComponent {
 
     override func isEqual(to other: OrgFileComponent) -> Bool {
         guard let other = other as? OrgHeadlineComponent else {
+            assertionFailure("Should not be able to be run")
             return false
         }
 

@@ -17,16 +17,16 @@ class OrgFileComponent: Equatable {
             return false
         }
 
+        guard lhs.isEqual(to: rhs) else {
+            return false
+        }
+
         guard lhs.children.count == rhs.children.count else {
             return false
         }
 
         for (leftChild, rightChild) in zip(lhs.children, rhs.children) {
             guard leftChild == rightChild else {
-                return false
-            }
-
-            guard leftChild.isEqual(to: rightChild) else {
                 return false
             }
         }
