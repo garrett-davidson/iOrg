@@ -53,4 +53,39 @@ class OrgParserTests: XCTestCase {
         parsedDocument = OrgParser.parse(lines: lines)
         XCTAssertEqual(document, parsedDocument)
     }
+
+    func testTODOs() {
+        let document = OrgHeadingComponent(title: "Document", headingLevel: 0)
+
+        var lines = ["* TODO Make it work"]
+        document.children = [OrgTODOComponent(title: "Make it work", headingLevel: 1, state: .TODO)]
+        var parsedDocument = OrgParser.parse(lines: lines)
+        XCTAssertEqual(document, parsedDocument)
+
+        lines = ["** TODO Make it work"]
+        document.children = [OrgTODOComponent(title: "Make it work", headingLevel: 2, state: .TODO)]
+        parsedDocument = OrgParser.parse(lines: lines)
+        XCTAssertEqual(document, parsedDocument)
+
+        lines = ["* TODO Make it work",
+                 "** TODO Make it work better"]
+        document.children = [OrgTODOComponent(title: "Make it work", headingLevel: 1, state: .TODO)]
+        document.children[0].children = [OrgTODOComponent(title: "Make it work better", headingLevel: 2, state: .TODO)]
+        parsedDocument = OrgParser.parse(lines: lines)
+        XCTAssertEqual(document, parsedDocument)
+
+        lines = ["* TODO Make it work",
+                 "* DONE Make it work better"]
+        document.children = [OrgTODOComponent(title: "Make it work", headingLevel: 1, state: .TODO), OrgTODOComponent(title: "Make it work better", headingLevel: 1, state: .DONE)]
+        parsedDocument = OrgParser.parse(lines: lines)
+        XCTAssertEqual(document, parsedDocument)
+
+        lines = ["* TODO Make it work",
+                 "** DONE Make it work better",
+                 "* ACTIVE Make it work faster"]
+        document.children = [OrgTODOComponent(title: "Make it work", headingLevel: 1, state: .TODO), OrgTODOComponent(title: "Make it work faster", headingLevel: 1, state: .Custom("ACTIVE"))]
+        document.children[0].children = [OrgTODOComponent(title: "Make it work better", headingLevel: 2, state: .DONE)]
+        parsedDocument = OrgParser.parse(lines: lines)
+        XCTAssertEqual(document, parsedDocument)
+    }
 }

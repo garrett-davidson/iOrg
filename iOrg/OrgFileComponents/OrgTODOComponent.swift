@@ -25,7 +25,20 @@ class OrgTODOComponent: OrgHeadingComponent {
                 return false
             }
         }
+
+        init(rawValue: String) {
+            switch rawValue {
+            case "TODO":
+                self = .TODO
+            case "DONE":
+                self = .DONE
+            default:
+                self = .Custom(rawValue)
+            }
+        }
     }
+
+    static let todoKeywords = ["TODO", "DONE", "ACTIVE"]
 
     var state: OrgTODOState
     var closeDate: Date?

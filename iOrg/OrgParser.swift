@@ -83,6 +83,20 @@ class OrgParser {
 
         let title = line[line.index(line.startIndex, offsetBy: headingLevel)...].trimmingCharacters(in: .whitespaces)
 
-        return OrgHeadingComponent(title: title, headingLevel: headingLevel)
+        if let todoState = todoStateFrom(title: title) {
+            // TODO: Implement closeDate fetching
+            return OrgTODOComponent(title: String(title.dropFirstWord()), headingLevel: headingLevel, state: todoState, closeDate: nil)
+        } else {
+            return OrgHeadingComponent(title: title, headingLevel: headingLevel)
+        }
+    }
+
+    static func todoStateFrom(title: String) -> OrgTODOComponent.OrgTODOState? {
+        for keyword in OrgTODOComponent.todoKeywords {
+            if title.hasPrefix(keyword) {
+                return OrgTODOComponent.OrgTODOState(rawValue: keyword)
+            }
+        }
+        return nil
     }
 }
