@@ -28,6 +28,10 @@ class OrgHeadingComponent: OrgFileComponent {
             return false
         }
 
+        guard self.headingLevel == other.headingLevel else {
+            return false
+        }
+
         return super.isEqual(to: other)
     }
 }
