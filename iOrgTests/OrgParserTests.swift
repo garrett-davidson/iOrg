@@ -10,82 +10,67 @@ import XCTest
 @testable import iOrg
 
 class OrgParserTests: XCTestCase {
-    func testSimpleHeadings() {
-        let document = OrgHeadingComponent(title: "Document", headingLevel: 0)
+    func testWhitespaceTokenizer() {
+        var lines = [""]
+        var token = Token.whitespace
+        var lexedToken = try! OrgParser.lex(lines: lines)[0]
+        XCTAssertEqual(token, lexedToken)
 
-        var lines = ["* Make it work"]
-        document.children = [OrgHeadingComponent(title: "Make it work", headingLevel: 1)]
-        var parsedDocument = OrgParser.parse(lines: lines)
-        XCTAssertEqual(document, parsedDocument)
+        lines = ["   "]
+        token = Token.whitespace
+        lexedToken = try! OrgParser.lex(lines: lines)[0]
+        XCTAssertEqual(token, lexedToken)
 
-        lines = ["** Make it work"]
-        document.children = [OrgHeadingComponent(title: "Make it work", headingLevel: 2)]
-        parsedDocument = OrgParser.parse(lines: lines)
-        XCTAssertEqual(document, parsedDocument)
-
-        lines = ["* Make it work",
-                 "** Make it work better"]
-        document.children = [OrgHeadingComponent(title: "Make it work", headingLevel: 1)]
-        document.children[0].children = [OrgHeadingComponent(title: "Make it work better", headingLevel: 2)]
-        parsedDocument = OrgParser.parse(lines: lines)
-        XCTAssertEqual(document, parsedDocument)
-
-        lines = ["* Make it work",
-                 "* Make it work better"]
-        document.children = [OrgHeadingComponent(title: "Make it work", headingLevel: 1), OrgHeadingComponent(title: "Make it work better", headingLevel: 1)]
-        parsedDocument = OrgParser.parse(lines: lines)
-        XCTAssertEqual(document, parsedDocument)
-
-        lines = ["* Make it work",
-                 "** Make it work better",
-                 "* Make it work faster"]
-        document.children = [OrgHeadingComponent(title: "Make it work", headingLevel: 1), OrgHeadingComponent(title: "Make it work faster", headingLevel: 1)]
-        document.children[0].children = [OrgHeadingComponent(title: "Make it work better", headingLevel: 2)]
-        parsedDocument = OrgParser.parse(lines: lines)
-        XCTAssertEqual(document, parsedDocument)
-
-        lines = ["* Make it work",
-                 "** Make it work better",
-                 "",
-                 "* Make it work faster"]
-        document.children = [OrgHeadingComponent(title: "Make it work", headingLevel: 1), OrgHeadingComponent(title: "Make it work faster", headingLevel: 1)]
-        document.children[0].children = [OrgHeadingComponent(title: "Make it work better", headingLevel: 2)]
-        parsedDocument = OrgParser.parse(lines: lines)
-        XCTAssertEqual(document, parsedDocument)
+        lines = ["  "]
+        token = Token.whitespace
+        lexedToken = try! OrgParser.lex(lines: lines)[0]
+        XCTAssertEqual(token, lexedToken)
     }
 
-    func testTODOs() {
-        let document = OrgHeadingComponent(title: "Document", headingLevel: 0)
+    func testHeadlineTokenizer() {
+        var lines = ["* Make it work"]
+        var token = Token.headline(level: 1, todoKeyword: nil, priority: nil, comment: false, title: "Make it work", tags: nil)
+        var lexedToken = try! OrgParser.lex(lines: lines)[0]
+        XCTAssertEqual(token, lexedToken)
 
-        var lines = ["* TODO Make it work"]
-        document.children = [OrgTODOComponent(title: "Make it work", headingLevel: 1, state: .TODO)]
-        var parsedDocument = OrgParser.parse(lines: lines)
-        XCTAssertEqual(document, parsedDocument)
+        lines = ["** Make it work"]
+        token = Token.headline(level: 2, todoKeyword: nil, priority: nil, comment: false, title: "Make it work", tags: nil)
+        lexedToken = try! OrgParser.lex(lines: lines)[0]
+        XCTAssertEqual(token, lexedToken)
 
-        lines = ["** TODO Make it work"]
-        document.children = [OrgTODOComponent(title: "Make it work", headingLevel: 2, state: .TODO)]
-        parsedDocument = OrgParser.parse(lines: lines)
-        XCTAssertEqual(document, parsedDocument)
+        lines = ["* TODO Make it work"]
+        token = Token.headline(level: 1, todoKeyword: "TODO", priority: nil, comment: false, title: "Make it work", tags: nil)
+        lexedToken = try! OrgParser.lex(lines: lines)[0]
+        XCTAssertEqual(token, lexedToken)
 
-        lines = ["* TODO Make it work",
-                 "** TODO Make it work better"]
-        document.children = [OrgTODOComponent(title: "Make it work", headingLevel: 1, state: .TODO)]
-        document.children[0].children = [OrgTODOComponent(title: "Make it work better", headingLevel: 2, state: .TODO)]
-        parsedDocument = OrgParser.parse(lines: lines)
-        XCTAssertEqual(document, parsedDocument)
+        lines = ["* DONE Make it work"]
+        token = Token.headline(level: 1, todoKeyword: "DONE", priority: nil, comment: false, title: "Make it work", tags: nil)
+        lexedToken = try! OrgParser.lex(lines: lines)[0]
+        XCTAssertEqual(token, lexedToken)
 
-        lines = ["* TODO Make it work",
-                 "* DONE Make it work better"]
-        document.children = [OrgTODOComponent(title: "Make it work", headingLevel: 1, state: .TODO), OrgTODOComponent(title: "Make it work better", headingLevel: 1, state: .DONE)]
-        parsedDocument = OrgParser.parse(lines: lines)
-        XCTAssertEqual(document, parsedDocument)
+        lines = ["* todo Make it work"]
+        token = Token.headline(level: 1, todoKeyword: nil, priority: nil, comment: false, title: "todo Make it work", tags: nil)
+        lexedToken = try! OrgParser.lex(lines: lines)[0]
+        XCTAssertEqual(token, lexedToken)
 
-        lines = ["* TODO Make it work",
-                 "** DONE Make it work better",
-                 "* ACTIVE Make it work faster"]
-        document.children = [OrgTODOComponent(title: "Make it work", headingLevel: 1, state: .TODO), OrgTODOComponent(title: "Make it work faster", headingLevel: 1, state: .Custom("ACTIVE"))]
-        document.children[0].children = [OrgTODOComponent(title: "Make it work better", headingLevel: 2, state: .DONE)]
-        parsedDocument = OrgParser.parse(lines: lines)
-        XCTAssertEqual(document, parsedDocument)
+        lines = ["*"]
+        token = Token.headline(level: 1, todoKeyword: nil, priority: nil, comment: false, title: nil, tags: nil)
+        lexedToken = try! OrgParser.lex(lines: lines)[0]
+        XCTAssertEqual(token, lexedToken)
+
+        lines = ["* DONE"]
+        token = Token.headline(level: 1, todoKeyword: "DONE", priority: nil, comment: false, title: nil, tags: nil)
+        lexedToken = try! OrgParser.lex(lines: lines)[0]
+        XCTAssertEqual(token, lexedToken)
+
+        lines = ["*** Some e-mail"]
+        token = Token.headline(level: 3, todoKeyword: nil, priority: nil, comment: false, title: "Some e-mail", tags: nil)
+        lexedToken = try! OrgParser.lex(lines: lines)[0]
+        XCTAssertEqual(token, lexedToken)
+
+        lines = ["**** TODO [#A] COMMENT Title :tag:a2%:"]
+        token = Token.headline(level: 4, todoKeyword: "TODO", priority: "A", comment: true, title: "Title", tags: ["tag", "a2%"])
+        lexedToken = try! OrgParser.lex(lines: lines)[0]
+        XCTAssertEqual(token, lexedToken)
     }
 }

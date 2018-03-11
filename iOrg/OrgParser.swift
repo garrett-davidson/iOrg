@@ -9,94 +9,24 @@
 import Foundation
 
 class OrgParser {
-    static func parse(file: OrgFile) -> OrgHeadingComponent {
+    static func read(file: OrgFile) throws -> OrgDocument {
         // TODO: Investigate how efficient this is for very large files
         let fileText = try! String(contentsOf: file.path, encoding: .utf8)
         let lines = fileText.components(separatedBy: .newlines)
-        return parse(lines: lines)
+        return try read(lines: lines)
     }
 
-    static func parse(lines: [String]) -> OrgHeadingComponent {
-        let documentRoot = OrgHeadingComponent(title: "Document", headingLevel: 0)
-        var headingQueue = [documentRoot]
-
-        var lineNumber = 0
-        
-        while lineNumber < lines.count {
-            let currentLine = lines[lineNumber]
-            lineNumber += 1
-            guard let firstCharacter = currentLine.first else {
-                continue
-            }
-
-            switch firstCharacter {
-            case "*":
-                guard let newHeading = parseHeading(currentLine) else {
-                    break
-                }
-
-                let previousHeading = headingQueue.last!
-
-                if previousHeading.headingLevel < newHeading.headingLevel {
-                    // Example
-                    // * previousHeading
-                    // ** newHeading
-                    headingQueue.append(newHeading)
-                    previousHeading.children.append(newHeading)
-                } else if previousHeading.headingLevel == newHeading.headingLevel {
-                    // Example
-                    // ** previousHeading
-                    // ** newHeading
-
-                    assert(headingQueue.count > 1)
-                    headingQueue.removeLast()
-
-                    headingQueue.last!.children.append(newHeading)
-
-                    headingQueue.append(newHeading)
-                } else {
-                    // Example
-                    // ** previousHeading
-                    // * newHeading
-
-                    assert(headingQueue.count > 1)
-                    headingQueue.removeLast(2)
-
-                    headingQueue.last!.children.append(newHeading)
-
-                    headingQueue.append(newHeading)
-                }
-            default:
-                break
-            }
-        }
-
-        return documentRoot
+    static func read(lines: [String]) throws -> OrgDocument {
+        return parse(tokens: try lex(lines: lines))
     }
 
-    static func parseHeading(_ line: String) -> OrgHeadingComponent? {
-        var headingLevel = 0
-
-        while line[line.index(line.startIndex, offsetBy: headingLevel)] == "*" {
-            headingLevel += 1
-        }
-
-        let title = line[line.index(line.startIndex, offsetBy: headingLevel)...].trimmingCharacters(in: .whitespaces)
-
-        if let todoState = todoStateFrom(title: title) {
-            // TODO: Implement closeDate fetching
-            return OrgTODOComponent(title: String(title.dropFirstWord()), headingLevel: headingLevel, state: todoState, closeDate: nil)
-        } else {
-            return OrgHeadingComponent(title: title, headingLevel: headingLevel)
-        }
+    static func lex(lines: [String]) throws -> [Token] {
+        return try lines.map({try Token(line: $0)})
     }
 
-    static func todoStateFrom(title: String) -> OrgTODOComponent.OrgTODOState? {
-        for keyword in OrgTODOComponent.todoKeywords {
-            if title.hasPrefix(keyword) {
-                return OrgTODOComponent.OrgTODOState(rawValue: keyword)
-            }
-        }
-        return nil
+    static func parse(tokens: [Token]) -> OrgDocument {
+        let document = OrgDocument()
+
+        return document
     }
 }

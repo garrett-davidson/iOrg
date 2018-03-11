@@ -15,13 +15,13 @@
 		680FBCAF205033B3005C777B /* iOrgTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680FBCAE205033B3005C777B /* iOrgTests.swift */; };
 		680FBCBA205033B3005C777B /* iOrgUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680FBCB9205033B3005C777B /* iOrgUITests.swift */; };
 		680FBCC820503B5B005C777B /* OrgParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680FBCC720503B5B005C777B /* OrgParser.swift */; };
-		680FBCCA20503BD9005C777B /* OrgFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680FBCC920503BD9005C777B /* OrgFile.swift */; };
-		680FBCCC20503CED005C777B /* OrgFileComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680FBCCB20503CED005C777B /* OrgFileComponent.swift */; };
-		680FBCCF20503E01005C777B /* OrgTODOComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680FBCCE20503E01005C777B /* OrgTODOComponent.swift */; };
-		680FBCD1205044FC005C777B /* OrgHeadingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680FBCD0205044FC005C777B /* OrgHeadingComponent.swift */; };
 		6871217120509AA7006885F3 /* OrgParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6871217020509AA7006885F3 /* OrgParserTests.swift */; };
 		687121742050E241006885F3 /* StringPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687121722050E0F3006885F3 /* StringPlus.swift */; };
 		687121762050E251006885F3 /* StringPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687121752050E251006885F3 /* StringPlusTests.swift */; };
+		68712178205239EF006885F3 /* Tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68712177205239EF006885F3 /* Tokens.swift */; };
+		6871217A2052F016006885F3 /* OrgElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687121792052F016006885F3 /* OrgElements.swift */; };
+		6871217E2055AE0B006885F3 /* NSTextCheckingResultPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6871217D2055AE0B006885F3 /* NSTextCheckingResultPlus.swift */; };
+		687121812055C40D006885F3 /* OrgFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687121802055C40D006885F3 /* OrgFile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,13 +56,13 @@
 		680FBCB9205033B3005C777B /* iOrgUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOrgUITests.swift; sourceTree = "<group>"; };
 		680FBCBB205033B3005C777B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		680FBCC720503B5B005C777B /* OrgParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgParser.swift; sourceTree = "<group>"; };
-		680FBCC920503BD9005C777B /* OrgFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgFile.swift; sourceTree = "<group>"; };
-		680FBCCB20503CED005C777B /* OrgFileComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgFileComponent.swift; sourceTree = "<group>"; };
-		680FBCCE20503E01005C777B /* OrgTODOComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgTODOComponent.swift; sourceTree = "<group>"; };
-		680FBCD0205044FC005C777B /* OrgHeadingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgHeadingComponent.swift; sourceTree = "<group>"; };
 		6871217020509AA7006885F3 /* OrgParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgParserTests.swift; sourceTree = "<group>"; };
 		687121722050E0F3006885F3 /* StringPlus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringPlus.swift; sourceTree = "<group>"; };
 		687121752050E251006885F3 /* StringPlusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringPlusTests.swift; sourceTree = "<group>"; };
+		68712177205239EF006885F3 /* Tokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokens.swift; sourceTree = "<group>"; };
+		687121792052F016006885F3 /* OrgElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgElements.swift; sourceTree = "<group>"; };
+		6871217D2055AE0B006885F3 /* NSTextCheckingResultPlus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextCheckingResultPlus.swift; sourceTree = "<group>"; };
+		687121802055C40D006885F3 /* OrgFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,13 +115,14 @@
 			children = (
 				680FBC99205033B3005C777B /* AppDelegate.swift */,
 				680FBCA0205033B3005C777B /* Assets.xcassets */,
+				6871217C2055ADED006885F3 /* Helpers */,
 				680FBCA5205033B3005C777B /* Info.plist */,
 				680FBCA2205033B3005C777B /* LaunchScreen.storyboard */,
 				680FBC9D205033B3005C777B /* Main.storyboard */,
-				680FBCC920503BD9005C777B /* OrgFile.swift */,
-				680FBCCD20503DA0005C777B /* OrgFileComponents */,
+				687121792052F016006885F3 /* OrgElements.swift */,
+				687121802055C40D006885F3 /* OrgFile.swift */,
 				680FBCC720503B5B005C777B /* OrgParser.swift */,
-				687121722050E0F3006885F3 /* StringPlus.swift */,
+				68712177205239EF006885F3 /* Tokens.swift */,
 				680FBC9B205033B3005C777B /* ViewController.swift */,
 			);
 			path = iOrg;
@@ -147,14 +148,13 @@
 			path = iOrgUITests;
 			sourceTree = "<group>";
 		};
-		680FBCCD20503DA0005C777B /* OrgFileComponents */ = {
+		6871217C2055ADED006885F3 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				680FBCCB20503CED005C777B /* OrgFileComponent.swift */,
-				680FBCD0205044FC005C777B /* OrgHeadingComponent.swift */,
-				680FBCCE20503E01005C777B /* OrgTODOComponent.swift */,
+				6871217D2055AE0B006885F3 /* NSTextCheckingResultPlus.swift */,
+				687121722050E0F3006885F3 /* StringPlus.swift */,
 			);
-			path = OrgFileComponents;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,14 +291,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				680FBCCF20503E01005C777B /* OrgTODOComponent.swift in Sources */,
-				680FBCCA20503BD9005C777B /* OrgFile.swift in Sources */,
+				687121812055C40D006885F3 /* OrgFile.swift in Sources */,
 				680FBCC820503B5B005C777B /* OrgParser.swift in Sources */,
-				680FBCD1205044FC005C777B /* OrgHeadingComponent.swift in Sources */,
-				680FBCCC20503CED005C777B /* OrgFileComponent.swift in Sources */,
+				6871217A2052F016006885F3 /* OrgElements.swift in Sources */,
 				680FBC9C205033B3005C777B /* ViewController.swift in Sources */,
 				687121742050E241006885F3 /* StringPlus.swift in Sources */,
+				6871217E2055AE0B006885F3 /* NSTextCheckingResultPlus.swift in Sources */,
 				680FBC9A205033B3005C777B /* AppDelegate.swift in Sources */,
+				68712178205239EF006885F3 /* Tokens.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

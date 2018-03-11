@@ -10,8 +10,7 @@ import Foundation
 
 class OrgFile {
     let path: URL
-    var isParsed = false
-    var components = [OrgFileComponent]()
+    var document: OrgDocument?
 
     init(file: URL) {
         self.path = file
