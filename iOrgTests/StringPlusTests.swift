@@ -10,7 +10,7 @@ import XCTest
 @testable import iOrg
 
 class StringPlusTests: XCTestCase {
-    func testExample() {
+    func testDropFirstWord() {
         var testString = "My test string"
         var output = "test string"
         XCTAssertEqual(String(testString.dropFirstWord()), output)

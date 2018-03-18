@@ -9,5 +9,5 @@
 import Foundation
 
 class OrgDocument {
-    let root = Token.headline(level: 0, todoKeyword: nil, priority: nil, comment: false, title: nil, tags: nil)
+    let root = Token.Headline(level: 0, todoKeyword: nil, priority: nil, comment: false, title: nil, tags: nil)
 }

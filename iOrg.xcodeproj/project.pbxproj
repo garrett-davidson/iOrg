@@ -63,6 +63,7 @@
 		687121792052F016006885F3 /* OrgElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgElements.swift; sourceTree = "<group>"; };
 		6871217D2055AE0B006885F3 /* NSTextCheckingResultPlus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextCheckingResultPlus.swift; sourceTree = "<group>"; };
 		687121802055C40D006885F3 /* OrgFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgFile.swift; sourceTree = "<group>"; };
+		68F4B4D8205EE0CD00017D9F /* iOrg.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOrg.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +114,7 @@
 		680FBC98205033B3005C777B /* iOrg */ = {
 			isa = PBXGroup;
 			children = (
+				68F4B4D8205EE0CD00017D9F /* iOrg.entitlements */,
 				680FBC99205033B3005C777B /* AppDelegate.swift */,
 				680FBCA0205033B3005C777B /* Assets.xcassets */,
 				6871217C2055ADED006885F3 /* Helpers */,
@@ -226,6 +228,11 @@
 					680FBC95205033B3005C777B = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					680FBCA9205033B3005C777B = {
 						CreatedOnToolsVersion = 9.2;
@@ -466,6 +473,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iOrg/iOrg.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FL8523SFDK;
 				INFOPLIST_FILE = iOrg/Info.plist;
@@ -481,6 +489,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iOrg/iOrg.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FL8523SFDK;
 				INFOPLIST_FILE = iOrg/Info.plist;

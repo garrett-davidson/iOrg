@@ -8,16 +8,21 @@
 
 import Foundation
 
-let tokenizers: [Tokenizer] = [WhitespaceTokenizer(), HeadlineTokenizer()]
-struct TokenizerError: Error {
-
-}
+let tokenizers: [Tokenizer] = [WhitespaceTokenizer(), HeadlineTokenizer(), BeginBlockTokenizer(), EndBlockTokenizer(), DrawerTokenizer(), BeginDynamicBlockTokenizer(), EndDynamicBlockTokenizer()]
 
 enum Token: Equatable {
-    case whitespace
-    case headline(level: Int, todoKeyword: String?, priority: Character?, comment: Bool, title: String?, tags: [String]?)
+    case Whitespace
+    case Headline(level: Int, todoKeyword: String?, priority: Character?, comment: Bool, title: String?, tags: [String]?)
+    case BeginBlock(title: String, parameters: String?)
+    case EndBlock(title: String)
+    case BeginDrawer(title: String)
+    case EndDrawer
+    case BeginDynamicBlock(title: String, parameters: String?)
+    case EndDynamicBlock
 
-    init(line: String) throws {
+    case Line(text: String)
+
+    init(line: String) {
         for tokenizer in tokenizers {
             if let token = tokenizer.tokenFrom(line: line) {
                 self = token
@@ -25,14 +30,14 @@ enum Token: Equatable {
             }
         }
 
-        throw TokenizerError()
+        self = .Line(text: line)
     }
 
     static func ==(lhs: Token, rhs: Token) -> Bool {
         switch (lhs, rhs) {
-        case (.whitespace, .whitespace):
+        case (.Whitespace, .Whitespace):
             return true
-        case (.headline(let leftLevel, let leftTODOKeyword, let leftPriority, let leftComment, let leftTitle, let leftTags), .headline(let rightLevel, let rightTODOKeyword, let rightPriority, let rightComment, let rightTitle, let rightTags)):
+        case (.Headline(let leftLevel, let leftTODOKeyword, let leftPriority, let leftComment, let leftTitle, let leftTags), .Headline(let rightLevel, let rightTODOKeyword, let rightPriority, let rightComment, let rightTitle, let rightTags)):
             guard leftTags?.count == rightTags?.count else {
                 return false
             }
@@ -48,6 +53,27 @@ enum Token: Equatable {
                 && leftPriority == rightPriority
                 && leftComment == rightComment
                 && leftTitle == rightTitle
+
+        case (.BeginBlock(let leftTitle, let leftParameters), .BeginBlock(let rightTitle, parameters: let rightParameters)):
+            return leftTitle == rightTitle
+                && leftParameters == rightParameters
+
+        case (.EndBlock(let leftTitle), .EndBlock(let rightTitle)):
+            return leftTitle == rightTitle
+
+        case (.BeginDrawer(let leftTitle), .BeginDrawer(let rightTitle)):
+            return leftTitle == rightTitle
+
+        case (.EndDrawer, .EndDrawer):
+            return true
+
+        case (.BeginDynamicBlock(let leftTitle, let leftParameters), .BeginDynamicBlock(let rightTitle, let rightParameters)):
+            return leftTitle == rightTitle
+                && leftParameters == rightParameters
+
+        case (.EndDynamicBlock, .EndDynamicBlock):
+            return true
+
         default:
             return false
         }
@@ -65,7 +91,7 @@ struct WhitespaceTokenizer: Tokenizer {
             return nil
         }
 
-        return .whitespace
+        return .Whitespace
     }
 }
 
@@ -95,6 +121,95 @@ struct HeadlineTokenizer: Tokenizer {
         let title = matches.trimmedMatch(at: MatchRange.Title.rawValue, in: line)
         let tags = matches.trimmedMatch(at: MatchRange.Tags.rawValue, in: line)?.split(separator: ":").flatMap({return $0.count > 0 ? String($0) : nil})
 
-        return Token.headline(level: starCount, todoKeyword: todoKeyword, priority: priority, comment: comment, title: title, tags: tags)
+        return Token.Headline(level: starCount, todoKeyword: todoKeyword, priority: priority, comment: comment, title: title, tags: tags)
     }
 }
+
+struct BeginBlockTokenizer: Tokenizer {
+    static let regex = try! NSRegularExpression(pattern: "^\\#\\+BEGIN_(\\S+)( .+)?$", options: .caseInsensitive)
+
+    enum MatchRange: Int {
+        case Title = 1
+        case Parameters = 2
+    }
+
+    func tokenFrom(line: String) -> Token? {
+        guard let matches = line.matches(for: BeginBlockTokenizer.regex).first else {
+            return nil
+        }
+
+        let title = matches.trimmedMatch(at: MatchRange.Title.rawValue, in: line)!
+        let parameters = matches.trimmedMatch(at: MatchRange.Parameters.rawValue, in: line)
+
+        return .BeginBlock(title: title, parameters: parameters)
+    }
+}
+
+struct EndBlockTokenizer: Tokenizer {
+    static let regex = try! NSRegularExpression(pattern: "^\\#\\+end_(\\S+)$", options: .caseInsensitive)
+
+    enum MatchRange: Int {
+        case Title = 1
+    }
+
+    func tokenFrom(line: String) -> Token? {
+        guard let matches = line.matches(for: EndBlockTokenizer.regex).first else {
+            return nil
+        }
+
+        let title = matches.trimmedMatch(at: MatchRange.Title.rawValue, in: line)!
+
+        return .EndBlock(title: title)
+    }
+}
+
+struct DrawerTokenizer: Tokenizer {
+    static let regex = try! NSRegularExpression(pattern: "^:([A-Za-z\\-_]+):$")
+
+    enum MatchRange: Int {
+        case Title = 1
+    }
+
+    func tokenFrom(line: String) -> Token? {
+        guard let matches = line.matches(for: DrawerTokenizer.regex).first else {
+            return nil
+        }
+
+        let title = matches.trimmedMatch(at: MatchRange.Title.rawValue, in: line)!
+
+        return title.uppercased() == "END" ? .EndDrawer : .BeginDrawer(title: title)
+    }
+}
+
+struct BeginDynamicBlockTokenizer: Tokenizer {
+    static let regex = try! NSRegularExpression(pattern: "^\\#\\+BEGIN: (\\S+)( .+)?$", options: .caseInsensitive)
+
+    enum MatchRange: Int {
+        case Title = 1
+        case Parameters = 2
+    }
+
+    func tokenFrom(line: String) -> Token? {
+        guard let matches = line.matches(for: BeginDynamicBlockTokenizer.regex).first else {
+            return nil
+        }
+
+        let title = matches.trimmedMatch(at: MatchRange.Title.rawValue, in: line)!
+        let parameters = matches.trimmedMatch(at: MatchRange.Parameters.rawValue, in: line)
+
+        return .BeginDynamicBlock(title: title, parameters: parameters)
+    }
+}
+
+struct EndDynamicBlockTokenizer: Tokenizer {
+    static let regex = try! NSRegularExpression(pattern: "^\\#\\+END:$", options: .caseInsensitive)
+
+    func tokenFrom(line: String) -> Token? {
+        guard line.matches(for: EndDynamicBlockTokenizer.regex).count > 0 else {
+            return nil
+        }
+
+        return .EndDynamicBlock
+    }
+}
+
