@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rrq-zU-HtS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Document Browser View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="iOrg" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="DocumentBrowserViewController" customModule="iOrg" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,48 +25,20 @@
             </objects>
             <point key="canvasLocation" x="233" y="133"/>
         </scene>
-        <!--Org Document View Controller-->
-        <scene sceneID="NVt-nZ-V1s">
+        <!--Document View Controller-->
+        <scene sceneID="psF-vK-leI">
             <objects>
-                <viewController id="Rrq-zU-HtS" customClass="OrgDocumentViewController" customModule="iOrg" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7lk-4l-aPR">
+                <viewController storyboardIdentifier="DocumentViewController" id="4zO-40-KSy" customClass="DocumentViewController" customModule="iOrg" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fRG-gQ-64n">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SyS-Fa-dxe">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="Rrq-zU-HtS" id="qK9-av-Ewm"/>
-                                    <outlet property="delegate" destination="Rrq-zU-HtS" id="gcB-aB-bey"/>
-                                </connections>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JMb-TN-QeF">
-                                <rect key="frame" x="0.0" y="318" width="375" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Open file..."/>
-                                <connections>
-                                    <action selector="openFile:" destination="Rrq-zU-HtS" eventType="touchUpInside" id="7Df-rN-CsX"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="SyS-Fa-dxe" firstAttribute="top" secondItem="Pwu-zv-bf7" secondAttribute="top" id="Hvl-tr-AOi"/>
-                            <constraint firstItem="SyS-Fa-dxe" firstAttribute="leading" secondItem="Pwu-zv-bf7" secondAttribute="leading" id="eih-Kt-2kY"/>
-                            <constraint firstItem="Pwu-zv-bf7" firstAttribute="trailing" secondItem="SyS-Fa-dxe" secondAttribute="trailing" id="n30-Sn-bBc"/>
-                            <constraint firstItem="Pwu-zv-bf7" firstAttribute="bottom" secondItem="SyS-Fa-dxe" secondAttribute="bottom" id="vf2-GK-Nsw"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Pwu-zv-bf7"/>
+                        <viewLayoutGuide key="safeArea" id="ZlO-33-QGb"/>
                     </view>
-                    <connections>
-                        <outlet property="openFileButton" destination="JMb-TN-QeF" id="oGy-aV-8Do"/>
-                        <outlet property="tableView" destination="SyS-Fa-dxe" id="guF-gw-gVI"/>
-                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7lW-2h-1pz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MEP-xR-hGU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1169" y="133"/>
+            <point key="canvasLocation" x="1254" y="133"/>
         </scene>
     </scenes>
 </document>

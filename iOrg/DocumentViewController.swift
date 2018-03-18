@@ -8,10 +8,7 @@
 
 import UIKit
 
-class DocumentViewController: UIViewController {
-    
-    @IBOutlet weak var documentNameLabel: UILabel!
-    
+class DocumentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var document: UIDocument?
     
     override func viewWillAppear(_ animated: Bool) {
@@ -20,8 +17,7 @@ class DocumentViewController: UIViewController {
         // Access the document
         document?.open(completionHandler: { (success) in
             if success {
-                // Display the content of the document, e.g.:
-                self.documentNameLabel.text = self.document?.fileURL.lastPathComponent
+
             } else {
                 // Make sure to handle the failed import appropriately, e.g., by presenting an error message to the user.
             }
@@ -32,5 +28,15 @@ class DocumentViewController: UIViewController {
         dismiss(animated: true) {
             self.document?.close(completionHandler: nil)
         }
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+
+        return cell
     }
 }
