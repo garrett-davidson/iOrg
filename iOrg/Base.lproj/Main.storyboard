@@ -61,11 +61,12 @@
                     </view>
                     <connections>
                         <outlet property="openFileButton" destination="JMb-TN-QeF" id="oGy-aV-8Do"/>
+                        <outlet property="tableView" destination="SyS-Fa-dxe" id="guF-gw-gVI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7lW-2h-1pz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="787" y="133"/>
+            <point key="canvasLocation" x="1169" y="133"/>
         </scene>
     </scenes>
 </document>
