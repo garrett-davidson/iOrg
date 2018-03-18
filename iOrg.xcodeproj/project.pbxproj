@@ -19,9 +19,9 @@
 		687121742050E241006885F3 /* StringPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687121722050E0F3006885F3 /* StringPlus.swift */; };
 		687121762050E251006885F3 /* StringPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687121752050E251006885F3 /* StringPlusTests.swift */; };
 		68712178205239EF006885F3 /* Tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68712177205239EF006885F3 /* Tokens.swift */; };
-		6871217A2052F016006885F3 /* OrgElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687121792052F016006885F3 /* OrgElements.swift */; };
+		6871217A2052F016006885F3 /* OrgDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687121792052F016006885F3 /* OrgDocument.swift */; };
 		6871217E2055AE0B006885F3 /* NSTextCheckingResultPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6871217D2055AE0B006885F3 /* NSTextCheckingResultPlus.swift */; };
-		687121812055C40D006885F3 /* OrgFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687121802055C40D006885F3 /* OrgFile.swift */; };
+		68F4B4DA205EE23E00017D9F /* OrgDocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4B4D9205EE23E00017D9F /* OrgDocumentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,10 +60,10 @@
 		687121722050E0F3006885F3 /* StringPlus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringPlus.swift; sourceTree = "<group>"; };
 		687121752050E251006885F3 /* StringPlusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringPlusTests.swift; sourceTree = "<group>"; };
 		68712177205239EF006885F3 /* Tokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokens.swift; sourceTree = "<group>"; };
-		687121792052F016006885F3 /* OrgElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgElements.swift; sourceTree = "<group>"; };
+		687121792052F016006885F3 /* OrgDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgDocument.swift; sourceTree = "<group>"; };
 		6871217D2055AE0B006885F3 /* NSTextCheckingResultPlus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextCheckingResultPlus.swift; sourceTree = "<group>"; };
-		687121802055C40D006885F3 /* OrgFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgFile.swift; sourceTree = "<group>"; };
 		68F4B4D8205EE0CD00017D9F /* iOrg.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOrg.entitlements; sourceTree = "<group>"; };
+		68F4B4D9205EE23E00017D9F /* OrgDocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgDocumentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,15 +114,15 @@
 		680FBC98205033B3005C777B /* iOrg */ = {
 			isa = PBXGroup;
 			children = (
-				68F4B4D8205EE0CD00017D9F /* iOrg.entitlements */,
 				680FBC99205033B3005C777B /* AppDelegate.swift */,
 				680FBCA0205033B3005C777B /* Assets.xcassets */,
+				68F4B4D9205EE23E00017D9F /* OrgDocumentViewController.swift */,
 				6871217C2055ADED006885F3 /* Helpers */,
 				680FBCA5205033B3005C777B /* Info.plist */,
+				68F4B4D8205EE0CD00017D9F /* iOrg.entitlements */,
 				680FBCA2205033B3005C777B /* LaunchScreen.storyboard */,
 				680FBC9D205033B3005C777B /* Main.storyboard */,
-				687121792052F016006885F3 /* OrgElements.swift */,
-				687121802055C40D006885F3 /* OrgFile.swift */,
+				687121792052F016006885F3 /* OrgDocument.swift */,
 				680FBCC720503B5B005C777B /* OrgParser.swift */,
 				68712177205239EF006885F3 /* Tokens.swift */,
 				680FBC9B205033B3005C777B /* ViewController.swift */,
@@ -298,12 +298,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				687121812055C40D006885F3 /* OrgFile.swift in Sources */,
 				680FBCC820503B5B005C777B /* OrgParser.swift in Sources */,
-				6871217A2052F016006885F3 /* OrgElements.swift in Sources */,
+				6871217A2052F016006885F3 /* OrgDocument.swift in Sources */,
 				680FBC9C205033B3005C777B /* ViewController.swift in Sources */,
 				687121742050E241006885F3 /* StringPlus.swift in Sources */,
 				6871217E2055AE0B006885F3 /* NSTextCheckingResultPlus.swift in Sources */,
+				68F4B4DA205EE23E00017D9F /* OrgDocumentViewController.swift in Sources */,
 				680FBC9A205033B3005C777B /* AppDelegate.swift in Sources */,
 				68712178205239EF006885F3 /* Tokens.swift in Sources */,
 			);

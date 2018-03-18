@@ -7,7 +7,8 @@
 //
 
 import Foundation
+import UIKit
 
-class OrgDocument {
+class OrgDocument: UIDocument {
     let root = Token.Headline(level: 0, todoKeyword: nil, priority: nil, comment: false, title: nil, tags: nil)
 }
