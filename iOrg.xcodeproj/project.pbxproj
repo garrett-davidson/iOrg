@@ -114,18 +114,15 @@
 		680FBC98205033B3005C777B /* iOrg */ = {
 			isa = PBXGroup;
 			children = (
-				680FBC99205033B3005C777B /* AppDelegate.swift */,
-				680FBCA0205033B3005C777B /* Assets.xcassets */,
-				68F4B4D9205EE23E00017D9F /* OrgDocumentViewController.swift */,
-				6871217C2055ADED006885F3 /* Helpers */,
-				680FBCA5205033B3005C777B /* Info.plist */,
-				68F4B4D8205EE0CD00017D9F /* iOrg.entitlements */,
-				680FBCA2205033B3005C777B /* LaunchScreen.storyboard */,
-				680FBC9D205033B3005C777B /* Main.storyboard */,
 				687121792052F016006885F3 /* OrgDocument.swift */,
+				68F4B4D9205EE23E00017D9F /* OrgDocumentViewController.swift */,
 				680FBCC720503B5B005C777B /* OrgParser.swift */,
 				68712177205239EF006885F3 /* Tokens.swift */,
 				680FBC9B205033B3005C777B /* ViewController.swift */,
+				6871217C2055ADED006885F3 /* Helpers */,
+				680FBCA2205033B3005C777B /* LaunchScreen.storyboard */,
+				680FBC9D205033B3005C777B /* Main.storyboard */,
+				68F4B4DD205EEF7400017D9F /* Supporting Files */,
 			);
 			path = iOrg;
 			sourceTree = "<group>";
@@ -157,6 +154,17 @@
 				687121722050E0F3006885F3 /* StringPlus.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		68F4B4DD205EEF7400017D9F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				680FBC99205033B3005C777B /* AppDelegate.swift */,
+				680FBCA0205033B3005C777B /* Assets.xcassets */,
+				680FBCA5205033B3005C777B /* Info.plist */,
+				68F4B4D8205EE0CD00017D9F /* iOrg.entitlements */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -473,10 +481,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = iOrg/iOrg.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "iOrg/Supporting Files/iOrg.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FL8523SFDK;
-				INFOPLIST_FILE = iOrg/Info.plist;
+				INFOPLIST_FILE = "iOrg/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.garrettdavidson.iOrg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -489,10 +497,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = iOrg/iOrg.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "iOrg/Supporting Files/iOrg.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FL8523SFDK;
-				INFOPLIST_FILE = iOrg/Info.plist;
+				INFOPLIST_FILE = "iOrg/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.garrettdavidson.iOrg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
