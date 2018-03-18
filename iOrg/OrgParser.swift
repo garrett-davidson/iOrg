@@ -9,13 +9,6 @@
 import Foundation
 
 class OrgParser {
-    static func read(file: OrgFile) -> OrgDocument {
-        // TODO: Investigate how efficient this is for very large files
-        let fileText = try! String(contentsOf: file.path, encoding: .utf8)
-        let lines = fileText.components(separatedBy: .newlines)
-        return read(lines: lines)
-    }
-
     static func read(lines: [String]) -> OrgDocument {
         return parse(tokens: lex(lines: lines))
     }
