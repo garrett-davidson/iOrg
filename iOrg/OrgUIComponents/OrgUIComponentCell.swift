@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
-protocol OrgUIComponentCell {
-    func draw(token: Token)
+class OrgUIComponentCell: UITableViewCell {
+    func draw(component: OrgComponent) {
+
+    }
 }
