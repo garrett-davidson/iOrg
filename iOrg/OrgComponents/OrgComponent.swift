@@ -30,4 +30,12 @@ class OrgComponent {
             return nil
         }
     }
+
+    func getType() -> String {
+        return String(describing: type(of: self))
+    }
+
+    static func getType() -> String {
+        return String(describing: self)
+    }
 }
