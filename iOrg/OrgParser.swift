@@ -9,17 +9,20 @@
 import Foundation
 
 class OrgParser {
-    static func read(lines: [String]) -> OrgDocument {
-        return parse(tokens: lex(lines: lines))
-    }
-
     static func lex(lines: [String]) -> [Token] {
         return lines.map({Token(line: $0)})
     }
 
-    static func parse(tokens: [Token]) -> OrgDocument {
-        let document = OrgDocument()
+    static func parse(tokens: [Token]) -> [OrgComponent] {
+        var components = [OrgComponent]()
+        for token in tokens {
+            guard let component = OrgComponent.from(token: token) else {
+                fatalError("Could not match token")
+            }
 
-        return document
+            components.append(component)
+        }
+
+        return components
     }
 }

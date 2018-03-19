@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68981E1A2060613300D8C040 /* LineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68981E192060613300D8C040 /* LineComponent.swift */; };
+		68981E1C2060618600D8C040 /* LineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68981E1B2060618600D8C040 /* LineCell.swift */; };
 		68F4B52B205EFA0100017D9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4B52A205EFA0100017D9F /* AppDelegate.swift */; };
 		68F4B52D205EFA0100017D9F /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4B52C205EFA0100017D9F /* DocumentBrowserViewController.swift */; };
 		68F4B52F205EFA0100017D9F /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4B52E205EFA0100017D9F /* DocumentViewController.swift */; };
@@ -48,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		68981E192060613300D8C040 /* LineComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineComponent.swift; sourceTree = "<group>"; };
+		68981E1B2060618600D8C040 /* LineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineCell.swift; sourceTree = "<group>"; };
 		68F4B527205EFA0100017D9F /* iOrg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOrg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68F4B52A205EFA0100017D9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68F4B52C205EFA0100017D9F /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
@@ -68,7 +72,7 @@
 		68F4B570205F001B00017D9F /* StringPlusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringPlusTests.swift; sourceTree = "<group>"; };
 		68F4B571205F001B00017D9F /* OrgParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgParserTests.swift; sourceTree = "<group>"; };
 		68F4B574205F0B1500017D9F /* iOrgTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOrgTests.swift; sourceTree = "<group>"; };
-		68F4B576205F0CED00017D9F /* OrgParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrgParser.swift; path = iOrg.bak/iOrg/OrgParser.swift; sourceTree = SOURCE_ROOT; };
+		68F4B576205F0CED00017D9F /* OrgParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrgParser.swift; path = iOrg/OrgParser.swift; sourceTree = SOURCE_ROOT; };
 		68F4B57A205F0DC500017D9F /* iOrg.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOrg.entitlements; sourceTree = "<group>"; };
 		68F4B57C205F0E0C00017D9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		68F4B57F205F1EC100017D9F /* HeadlineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineCell.swift; sourceTree = "<group>"; };
@@ -186,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				68F4B57F205F1EC100017D9F /* HeadlineCell.swift */,
+				68981E1B2060618600D8C040 /* LineCell.swift */,
 				68F4B581205F205400017D9F /* OrgUIComponentCell.swift */,
 			);
 			path = OrgUIComponents;
@@ -196,6 +201,7 @@
 			children = (
 				68F4B586205F70AF00017D9F /* HeadlineComponent.swift */,
 				68F4B584205F6EF300017D9F /* OrgComponent.swift */,
+				68981E192060613300D8C040 /* LineComponent.swift */,
 				68F4B588205FE9F300017D9F /* TODOComponent.swift */,
 			);
 			path = OrgComponents;
@@ -341,11 +347,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				68F4B582205F205400017D9F /* OrgUIComponentCell.swift in Sources */,
+				68981E1C2060618600D8C040 /* LineCell.swift in Sources */,
 				68F4B561205EFA1500017D9F /* ViewController.swift in Sources */,
 				68F4B585205F6EF300017D9F /* OrgComponent.swift in Sources */,
 				68F4B531205EFA0100017D9F /* OrgDocument.swift in Sources */,
 				68F4B589205FE9F300017D9F /* TODOComponent.swift in Sources */,
 				68F4B56F205EFFAE00017D9F /* StringPlus.swift in Sources */,
+				68981E1A2060613300D8C040 /* LineComponent.swift in Sources */,
 				68F4B52F205EFA0100017D9F /* DocumentViewController.swift in Sources */,
 				68F4B52D205EFA0100017D9F /* DocumentBrowserViewController.swift in Sources */,
 				68F4B580205F1EC100017D9F /* HeadlineCell.swift in Sources */,
