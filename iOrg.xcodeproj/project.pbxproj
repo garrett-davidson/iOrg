@@ -22,7 +22,6 @@
 		68F4B573205F001B00017D9F /* OrgParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4B571205F001B00017D9F /* OrgParserTests.swift */; };
 		68F4B575205F0B1500017D9F /* iOrgTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4B574205F0B1500017D9F /* iOrgTests.swift */; };
 		68F4B578205F0CED00017D9F /* OrgParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4B576205F0CED00017D9F /* OrgParser.swift */; };
-		68F4B579205F0CED00017D9F /* OrgDocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4B577205F0CED00017D9F /* OrgDocumentViewController.swift */; };
 		68F4B57D205F0E0C00017D9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68F4B57B205F0E0C00017D9F /* Main.storyboard */; };
 		68F4B580205F1EC100017D9F /* HeadlineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4B57F205F1EC100017D9F /* HeadlineCell.swift */; };
 		68F4B582205F205400017D9F /* OrgUIComponentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4B581205F205400017D9F /* OrgUIComponentCell.swift */; };
@@ -70,7 +69,6 @@
 		68F4B571205F001B00017D9F /* OrgParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgParserTests.swift; sourceTree = "<group>"; };
 		68F4B574205F0B1500017D9F /* iOrgTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOrgTests.swift; sourceTree = "<group>"; };
 		68F4B576205F0CED00017D9F /* OrgParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrgParser.swift; path = iOrg.bak/iOrg/OrgParser.swift; sourceTree = SOURCE_ROOT; };
-		68F4B577205F0CED00017D9F /* OrgDocumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrgDocumentViewController.swift; path = iOrg.bak/iOrg/OrgDocumentViewController.swift; sourceTree = SOURCE_ROOT; };
 		68F4B57A205F0DC500017D9F /* iOrg.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOrg.entitlements; sourceTree = "<group>"; };
 		68F4B57C205F0E0C00017D9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		68F4B57F205F1EC100017D9F /* HeadlineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineCell.swift; sourceTree = "<group>"; };
@@ -135,7 +133,6 @@
 				68F4B57B205F0E0C00017D9F /* Main.storyboard */,
 				68F4B583205F6E6C00017D9F /* OrgComponents */,
 				68F4B530205EFA0100017D9F /* OrgDocument.swift */,
-				68F4B577205F0CED00017D9F /* OrgDocumentViewController.swift */,
 				68F4B576205F0CED00017D9F /* OrgParser.swift */,
 				68F4B57E205F1EAA00017D9F /* OrgUIComponents */,
 				68F4B566205EFA1C00017D9F /* Supporting Files */,
@@ -354,7 +351,6 @@
 				68F4B580205F1EC100017D9F /* HeadlineCell.swift in Sources */,
 				68F4B52B205EFA0100017D9F /* AppDelegate.swift in Sources */,
 				68F4B578205F0CED00017D9F /* OrgParser.swift in Sources */,
-				68F4B579205F0CED00017D9F /* OrgDocumentViewController.swift in Sources */,
 				68F4B587205F70AF00017D9F /* HeadlineComponent.swift in Sources */,
 				68F4B56E205EFFAE00017D9F /* NSTextCheckingResultPlus.swift in Sources */,
 				68F4B565205EFA1500017D9F /* Tokens.swift in Sources */,
@@ -524,7 +520,6 @@
 		68F4B554205EFA0100017D9F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "iOrg/Supporting Files/iOrg.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FL8523SFDK;
@@ -540,7 +535,6 @@
 		68F4B555205EFA0100017D9F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "iOrg/Supporting Files/iOrg.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FL8523SFDK;
