@@ -18,6 +18,11 @@ class OrgDocument: UIDocument {
     
     override func load(fromContents contents: Any, ofType typeName: String?) throws {
         // Load your document from contents
+        guard let contents = contents as? String else {
+            return
+        }
+
+        let tokens = OrgParser.lex(lines: contents.split(separator: "\n").map({String($0)}))
     }
 }
 

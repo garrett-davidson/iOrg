@@ -32,7 +32,23 @@
                     <view key="view" contentMode="scaleToFill" id="fRG-gQ-64n">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hBP-I6-h4a">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="4zO-40-KSy" id="F5h-CU-r7E"/>
+                                    <outlet property="delegate" destination="4zO-40-KSy" id="D8Y-cB-UPL"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZlO-33-QGb" firstAttribute="trailing" secondItem="hBP-I6-h4a" secondAttribute="trailing" id="F0F-Yf-fFA"/>
+                            <constraint firstItem="hBP-I6-h4a" firstAttribute="leading" secondItem="ZlO-33-QGb" secondAttribute="leading" id="GP3-Dn-SNO"/>
+                            <constraint firstItem="hBP-I6-h4a" firstAttribute="top" secondItem="ZlO-33-QGb" secondAttribute="top" id="WD7-yz-Qc3"/>
+                            <constraint firstItem="ZlO-33-QGb" firstAttribute="bottom" secondItem="hBP-I6-h4a" secondAttribute="bottom" id="cPo-GM-d5p"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ZlO-33-QGb"/>
                     </view>
                 </viewController>
