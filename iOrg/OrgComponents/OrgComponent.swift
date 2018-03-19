@@ -26,6 +26,8 @@ class OrgComponent {
             } else {
                 return TODOComponent(withToken: token)
             }
+        case .Line:
+            return LineComponent(withToken: token)
         default:
             return nil
         }

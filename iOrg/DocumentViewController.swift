@@ -14,6 +14,7 @@ class DocumentViewController: UIViewController, UITableViewDataSource, UITableVi
 
     override func viewDidLoad() {
         tableVIew.register(HeadlineCell.self, forCellReuseIdentifier: HeadlineComponent.getType())
+        tableVIew.register(LineCell.self, forCellReuseIdentifier: LineComponent.getType())
     }
     
     override func viewWillAppear(_ animated: Bool) {
