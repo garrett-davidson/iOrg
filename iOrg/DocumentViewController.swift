@@ -9,7 +9,12 @@
 import UIKit
 
 class DocumentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    var document: UIDocument?
+    var document: OrgDocument?
+    @IBOutlet weak var tableVIew: UITableView!
+
+    override func viewDidLoad() {
+        tableVIew.register(HeadlineCell.self, forCellReuseIdentifier: HeadlineComponent.getType())
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -17,7 +22,7 @@ class DocumentViewController: UIViewController, UITableViewDataSource, UITableVi
         // Access the document
         document?.open(completionHandler: { (success) in
             if success {
-
+                self.tableVIew.reloadData()
             } else {
                 // Make sure to handle the failed import appropriately, e.g., by presenting an error message to the user.
             }
@@ -31,11 +36,16 @@ class DocumentViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return document?.components.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        let component = document!.components[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: component.getType()) as? OrgUIComponentCell else {
+            fatalError("Could not load cell")
+        }
+
+        cell.draw(component: component)
 
         return cell
     }
