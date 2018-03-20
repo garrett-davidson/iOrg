@@ -198,4 +198,16 @@ class OrgParserTests: XCTestCase {
         lexedToken = OrgParser.lex(lines: lines)[0]
         XCTAssertNotEqual(token, lexedToken)
     }
+
+    func testBeginFootnote() {
+        var lines = ["[fn:1] The link is: https://orgmode.org"]
+        var token = Token.BeginFootnote(label: "1", contents: "The link is: https://orgmode.org")
+        var lexedToken = OrgParser.lex(lines: lines)[0]
+        XCTAssertEqual(token, lexedToken)
+
+        lines = ["[fn:name]"]
+        token = Token.BeginFootnote(label: "name", contents: "")
+        lexedToken = OrgParser.lex(lines: lines)[0]
+        XCTAssertEqual(token, lexedToken)
+    }
 }

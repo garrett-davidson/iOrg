@@ -8,7 +8,7 @@
 
 import Foundation
 
-let tokenizers: [Tokenizer] = [WhitespaceTokenizer(), HeadlineTokenizer(), BeginBlockTokenizer(), EndBlockTokenizer(), DrawerTokenizer(), BeginDynamicBlockTokenizer(), EndDynamicBlockTokenizer()]
+let tokenizers: [Tokenizer] = [WhitespaceTokenizer(), HeadlineTokenizer(), BeginBlockTokenizer(), EndBlockTokenizer(), DrawerTokenizer(), BeginDynamicBlockTokenizer(), EndDynamicBlockTokenizer(), BeginFootnoteTokenizer()]
 
 enum Token: Equatable {
     case Whitespace
@@ -19,6 +19,7 @@ enum Token: Equatable {
     case EndDrawer
     case BeginDynamicBlock(title: String, parameters: String?)
     case EndDynamicBlock
+    case BeginFootnote(label: String, contents: String)
 
     case Line(text: String)
 
@@ -73,6 +74,10 @@ enum Token: Equatable {
 
         case (.EndDynamicBlock, .EndDynamicBlock):
             return true
+
+        case (let .BeginFootnote(leftLabel, leftContents), let .BeginFootnote(rightLabel, rightContents)):
+            return leftLabel == rightLabel
+                && leftContents == rightContents
 
         default:
             return false
@@ -210,6 +215,26 @@ struct EndDynamicBlockTokenizer: Tokenizer {
         }
 
         return .EndDynamicBlock
+    }
+}
+
+struct BeginFootnoteTokenizer: Tokenizer {
+    static let regex = try! NSRegularExpression(pattern: "^\\[fn:([0-9]+|[a-zA-Z\\-_]+)\\]( .+)?", options: .caseInsensitive)
+
+    enum MatchRange: Int {
+        case Label = 1
+        case Contents = 2
+    }
+
+    func tokenFrom(line: String) -> Token? {
+        guard let matches = line.matches(for: BeginFootnoteTokenizer.regex).first else {
+            return nil
+        }
+
+        let label = matches.trimmedMatch(at: MatchRange.Label.rawValue, in: line)!
+        let contents = matches.trimmedMatch(at: MatchRange.Contents.rawValue, in: line) ?? ""
+
+        return .BeginFootnote(label: label, contents: contents)
     }
 }
 

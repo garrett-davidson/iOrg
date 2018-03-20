@@ -13,6 +13,8 @@ class OrgParser {
         return lines.map({Token(line: $0)})
     }
 
+    // TODO: Properly handle multiline footnotes https://orgmode.org/worg/dev/org-syntax.html#Footnote_Definitions
+    // TODO: Properly handle inline footnotes https://orgmode.org/manual/Footnotes.html
     static func parse(tokens: [Token]) -> [OrgComponent] {
         var components = [OrgComponent]()
         for token in tokens {
