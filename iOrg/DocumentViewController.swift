@@ -10,11 +10,11 @@ import UIKit
 
 class DocumentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var document: OrgDocument?
-    @IBOutlet weak var tableVIew: UITableView!
+    @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
-        tableVIew.register(HeadlineCell.self, forCellReuseIdentifier: HeadlineComponent.getType())
-        tableVIew.register(LineCell.self, forCellReuseIdentifier: LineComponent.getType())
+        tableView.register(HeadlineCell.self, forCellReuseIdentifier: HeadlineComponent.getType())
+        tableView.register(LineCell.self, forCellReuseIdentifier: LineComponent.getType())
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -23,7 +23,7 @@ class DocumentViewController: UIViewController, UITableViewDataSource, UITableVi
         // Access the document
         document?.open(completionHandler: { (success) in
             if success {
-                self.tableVIew.reloadData()
+                self.tableView.reloadData()
             } else {
                 // Make sure to handle the failed import appropriately, e.g., by presenting an error message to the user.
             }

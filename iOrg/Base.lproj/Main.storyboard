@@ -52,7 +52,7 @@
                         <viewLayoutGuide key="safeArea" id="ZlO-33-QGb"/>
                     </view>
                     <connections>
-                        <outlet property="tableVIew" destination="hBP-I6-h4a" id="Qom-zT-Uxx"/>
+                        <outlet property="tableView" destination="hBP-I6-h4a" id="C66-gu-1P4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MEP-xR-hGU" userLabel="First Responder" sceneMemberID="firstResponder"/>
