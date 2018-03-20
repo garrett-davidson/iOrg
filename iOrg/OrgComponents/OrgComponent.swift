@@ -7,12 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 class OrgComponent {
     weak var parent: OrgComponent?
     var children: [OrgComponent]?
 
     var indentationLevel = 0
+    var height: CGFloat = 20
 
     internal init(withToken token: Token) {
         // Intentionally empty

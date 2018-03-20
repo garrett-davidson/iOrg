@@ -11,6 +11,5 @@ import UIKit
 
 class OrgUIComponentCell: UITableViewCell {
     func draw(component: OrgComponent) {
-
     }
 }
