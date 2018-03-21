@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68739B302061EBD300592BED /* PlainListItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68739B2F2061EBD300592BED /* PlainListItemComponent.swift */; };
+		68739B322061ECDE00592BED /* PlainListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68739B312061ECDE00592BED /* PlainListItemCell.swift */; };
 		68981E1A2060613300D8C040 /* LineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68981E192060613300D8C040 /* LineComponent.swift */; };
 		68981E1C2060618600D8C040 /* LineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68981E1B2060618600D8C040 /* LineCell.swift */; };
 		68F4B52B205EFA0100017D9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4B52A205EFA0100017D9F /* AppDelegate.swift */; };
@@ -50,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		68739B2F2061EBD300592BED /* PlainListItemComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainListItemComponent.swift; sourceTree = "<group>"; };
+		68739B312061ECDE00592BED /* PlainListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainListItemCell.swift; sourceTree = "<group>"; };
 		68981E192060613300D8C040 /* LineComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineComponent.swift; sourceTree = "<group>"; };
 		68981E1B2060618600D8C040 /* LineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineCell.swift; sourceTree = "<group>"; };
 		68F4B527205EFA0100017D9F /* iOrg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOrg.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -192,6 +196,7 @@
 				68F4B57F205F1EC100017D9F /* HeadlineCell.swift */,
 				68981E1B2060618600D8C040 /* LineCell.swift */,
 				68F4B581205F205400017D9F /* OrgUIComponentCell.swift */,
+				68739B312061ECDE00592BED /* PlainListItemCell.swift */,
 			);
 			path = OrgUIComponents;
 			sourceTree = "<group>";
@@ -200,8 +205,9 @@
 			isa = PBXGroup;
 			children = (
 				68F4B586205F70AF00017D9F /* HeadlineComponent.swift */,
-				68F4B584205F6EF300017D9F /* OrgComponent.swift */,
 				68981E192060613300D8C040 /* LineComponent.swift */,
+				68F4B584205F6EF300017D9F /* OrgComponent.swift */,
+				68739B2F2061EBD300592BED /* PlainListItemComponent.swift */,
 				68F4B588205FE9F300017D9F /* TODOComponent.swift */,
 			);
 			path = OrgComponents;
@@ -359,9 +365,11 @@
 				68F4B580205F1EC100017D9F /* HeadlineCell.swift in Sources */,
 				68F4B52B205EFA0100017D9F /* AppDelegate.swift in Sources */,
 				68F4B578205F0CED00017D9F /* OrgParser.swift in Sources */,
+				68739B302061EBD300592BED /* PlainListItemComponent.swift in Sources */,
 				68F4B587205F70AF00017D9F /* HeadlineComponent.swift in Sources */,
 				68F4B56E205EFFAE00017D9F /* NSTextCheckingResultPlus.swift in Sources */,
 				68F4B565205EFA1500017D9F /* Tokens.swift in Sources */,
+				68739B322061ECDE00592BED /* PlainListItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,6 +30,8 @@ class OrgComponent {
             }
         case .Line:
             return LineComponent(withToken: token)
+        case .PlainListItem:
+            return PlainListItemComponent(withToken: token)
         default:
             return nil
         }

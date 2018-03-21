@@ -30,4 +30,3 @@ class OrgDocument: UIDocument {
         self.components = OrgParser.parse(tokens: tokens)
     }
 }
-

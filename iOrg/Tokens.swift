@@ -8,7 +8,7 @@
 
 import Foundation
 
-let tokenizers: [Tokenizer] = [WhitespaceTokenizer(), HeadlineTokenizer(), BeginBlockTokenizer(), EndBlockTokenizer(), DrawerTokenizer(), BeginDynamicBlockTokenizer(), EndDynamicBlockTokenizer(), BeginFootnoteTokenizer()]
+let tokenizers: [Tokenizer] = [WhitespaceTokenizer(), HeadlineTokenizer(), BeginBlockTokenizer(), EndBlockTokenizer(), DrawerTokenizer(), BeginDynamicBlockTokenizer(), EndDynamicBlockTokenizer(), BeginFootnoteTokenizer(), PlainListItemTokenizer()]
 
 enum Token: Equatable {
     case Whitespace
@@ -20,6 +20,7 @@ enum Token: Equatable {
     case BeginDynamicBlock(title: String, parameters: String?)
     case EndDynamicBlock
     case BeginFootnote(label: String, contents: String)
+    case PlainListItem(bullet: String, checked: Bool?, tag: String?, contents: String?)
 
     case Line(text: String)
 
@@ -77,6 +78,12 @@ enum Token: Equatable {
 
         case (let .BeginFootnote(leftLabel, leftContents), let .BeginFootnote(rightLabel, rightContents)):
             return leftLabel == rightLabel
+                && leftContents == rightContents
+
+        case (let .PlainListItem(leftBullet, leftChecked, leftTag, leftContents), let .PlainListItem(rightBullet, rightChecked, rightTag, rightContents)):
+            return leftBullet == rightBullet
+                && leftChecked == rightChecked
+                && leftTag == rightTag
                 && leftContents == rightContents
 
         default:
@@ -238,3 +245,33 @@ struct BeginFootnoteTokenizer: Tokenizer {
     }
 }
 
+struct PlainListItemTokenizer: Tokenizer {
+    static let regex = try! NSRegularExpression(pattern: "^\\s+([*\\-+]|([0-9]+|[A-Za-z])(\\.|\\)))( \\[( |X)\\])?( (.+) ::)?( .+)?$", options: .caseInsensitive)
+
+    enum MatchRange: Int {
+        case Bullet = 1
+        case Checkmark = 5
+        case Tag = 7
+        case Contents = 8
+    }
+
+    func tokenFrom(line: String) -> Token? {
+        guard let matches = line.matches(for: PlainListItemTokenizer.regex).first else {
+            return nil
+        }
+
+        let bullet = matches.trimmedMatch(at: MatchRange.Bullet.rawValue, in: line)!
+
+        let checked: Bool?
+        if let checkmark = matches.trimmedMatch(at: MatchRange.Checkmark.rawValue, in: line) {
+            checked = checkmark == "X"
+        } else {
+            checked = nil
+        }
+
+        let tag = matches.trimmedMatch(at: MatchRange.Tag.rawValue, in: line)
+        let contents = matches.trimmedMatch(at: MatchRange.Contents.rawValue, in: line)
+
+        return .PlainListItem(bullet: bullet, checked: checked, tag: tag, contents: contents)
+    }
+}
