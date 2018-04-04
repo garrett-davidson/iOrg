@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class LineCell: OrgUIComponentCell {
     override func draw(component: OrgComponent) {
@@ -15,5 +16,6 @@ class LineCell: OrgUIComponentCell {
         }
 
         self.textLabel?.text = line.text
+        self.backgroundColor = .orange
     }
 }
