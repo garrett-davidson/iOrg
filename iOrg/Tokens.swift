@@ -131,7 +131,7 @@ struct HeadlineTokenizer: Tokenizer {
         let priority = matches.trimmedMatch(at: MatchRange.Priority.rawValue, in: line)?.first
         let comment = matches.trimmedMatch(at: MatchRange.Comment.rawValue, in: line) != nil
         let title = matches.trimmedMatch(at: MatchRange.Title.rawValue, in: line)
-        let tags = matches.trimmedMatch(at: MatchRange.Tags.rawValue, in: line)?.split(separator: ":").flatMap({return $0.count > 0 ? String($0) : nil})
+        let tags = matches.trimmedMatch(at: MatchRange.Tags.rawValue, in: line)?.split(separator: ":").compactMap({return $0.count > 0 ? String($0) : nil})
 
         return Token.Headline(level: starCount, todoKeyword: todoKeyword, priority: priority, comment: comment, title: title, tags: tags)
     }
