@@ -51,8 +51,4 @@ class DocumentViewController: UIViewController, UITableViewDataSource, UITableVi
 
         return cell
     }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return document!.components[indexPath.row].height
-    }
 }
