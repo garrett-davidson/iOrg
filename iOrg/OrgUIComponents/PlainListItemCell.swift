@@ -16,6 +16,6 @@ class PlainListItemCell: OrgUIComponentCell {
             fatalError("Wrong component")
         }
 
-        self.textLabel?.text = item.contents
+        self.textLabel?.text = item.bullet + " " + (item.contents ?? "")
     }
 }
