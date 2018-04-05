@@ -11,7 +11,7 @@ import UIKit
 
 class LineCell: OrgUIComponentCell {
     override func draw(component: OrgComponent, editing: Bool = false) {
-        guard let line = component as? LineComponent else {
+        guard component is LineComponent else {
             fatalError("Wrong component")
         }
 

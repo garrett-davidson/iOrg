@@ -12,7 +12,7 @@ import UIKit
 class PlainListItemCell: OrgUIComponentCell {
 
     override func draw(component: OrgComponent, editing: Bool = false) {
-        guard let item = component as? PlainListItemComponent else {
+        guard component is PlainListItemComponent else {
             fatalError("Wrong component")
         }
 
