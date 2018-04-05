@@ -15,7 +15,7 @@ class LineCell: OrgUIComponentCell {
             fatalError("Wrong component")
         }
 
-        self.textLabel?.text = line.text
+        self.textField.text = line.text
         self.backgroundColor = .orange
     }
 }

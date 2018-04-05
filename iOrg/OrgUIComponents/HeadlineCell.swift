@@ -21,7 +21,7 @@ class HeadlineCell: OrgUIComponentCell {
 
         let fontSize = CGFloat(HeadlineCell.headlineDefaultFontSize - (headline.headlineLevel * HeadlineCell.headlineLevelFontSizeMultiplier))
         headline.height = fontSize * 1.5
-        self.textLabel?.font = HeadlineCell.headlineFont.withSize(fontSize)
-        self.textLabel?.text = headline.title
+        self.textField.font = HeadlineCell.headlineFont.withSize(fontSize)
+        self.textField.text = headline.title
     }
 }
