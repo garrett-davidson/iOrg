@@ -19,4 +19,12 @@ class LineComponent: OrgComponent {
         self.text = text
         super.init(withToken: token)
     }
+
+    override func formattedText() -> String {
+        return self.text
+    }
+
+    override func rawText() -> String {
+        return self.text
+    }
 }

@@ -10,6 +10,7 @@ import UIKit
 
 class DocumentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var document: OrgDocument?
+    var currentlyEditingIndexPath: IndexPath?
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
@@ -42,13 +43,32 @@ class DocumentViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let component = document!.components[indexPath.row]
+        let row = indexPath.row
+        let component = document!.components[row]
         guard let cell = tableView.dequeueReusableCell(withIdentifier: component.getType()) as? OrgUIComponentCell else {
             fatalError("Could not load cell")
         }
 
-        cell.draw(component: component)
+        cell.draw(component: component, editing: currentlyEditingIndexPath == indexPath)
 
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let indicesToUpdate: [IndexPath]
+        if let finishedEditingIndexPath = currentlyEditingIndexPath {
+            indicesToUpdate = [finishedEditingIndexPath, indexPath]
+        } else {
+            indicesToUpdate = [indexPath]
+        }
+        currentlyEditingIndexPath = indexPath
+
+        tableView.reloadRows(at: indicesToUpdate, with: .automatic)
+
+        guard let cell = tableView.cellForRow(at: indexPath) as? OrgUIComponentCell else {
+            fatalError()
+        }
+
+        cell.textField.becomeFirstResponder()
     }
 }

@@ -10,12 +10,13 @@ import Foundation
 import UIKit
 
 class LineCell: OrgUIComponentCell {
-    override func draw(component: OrgComponent) {
+    override func draw(component: OrgComponent, editing: Bool = false) {
         guard let line = component as? LineComponent else {
             fatalError("Wrong component")
         }
 
-        self.textField.text = line.text
         self.backgroundColor = .orange
+
+        super.draw(component: component, editing: editing)
     }
 }

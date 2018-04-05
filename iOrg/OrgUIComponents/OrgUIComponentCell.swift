@@ -12,7 +12,9 @@ import UIKit
 class OrgUIComponentCell: UITableViewCell {
     var textField: UITextView
 
-    func draw(component: OrgComponent) {
+    func draw(component: OrgComponent, editing: Bool = false) {
+        self.textField.isUserInteractionEnabled = editing
+        self.textField.text = editing ? component.rawText() : component.formattedText()
     }
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

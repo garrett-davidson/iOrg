@@ -14,6 +14,8 @@ class PlainListItemComponent: OrgComponent {
     var tag: String?
     var contents: String?
 
+    var formattedBullet = "•"
+
     override init(withToken token: Token) {
         guard case let .PlainListItem(bullet, checked, tag, contents) = token else {
             fatalError("Wrong token type")
@@ -25,5 +27,13 @@ class PlainListItemComponent: OrgComponent {
         self.contents = contents
 
         super.init(withToken: token)
+    }
+
+    override func formattedText() -> String {
+        return formattedBullet + " " + (contents ?? "")
+    }
+
+    override func rawText() -> String {
+        return bullet + " " + (contents ?? "")
     }
 }

@@ -14,7 +14,7 @@ class HeadlineCell: OrgUIComponentCell {
     static let headlineDefaultFontSize = 40
     static let headlineLevelFontSizeMultiplier = 7
 
-    override func draw(component: OrgComponent) {
+    override func draw(component: OrgComponent, editing: Bool = false) {
         guard let headline = component as? HeadlineComponent else {
             fatalError("Wrong component")
         }
@@ -22,6 +22,7 @@ class HeadlineCell: OrgUIComponentCell {
         let fontSize = CGFloat(HeadlineCell.headlineDefaultFontSize - (headline.headlineLevel * HeadlineCell.headlineLevelFontSizeMultiplier))
         headline.height = fontSize * 1.5
         self.textField.font = HeadlineCell.headlineFont.withSize(fontSize)
-        self.textField.text = headline.title
+
+        super.draw(component: component, editing: editing)
     }
 }

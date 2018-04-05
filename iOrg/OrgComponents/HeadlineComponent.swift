@@ -30,4 +30,12 @@ class HeadlineComponent: OrgComponent {
 
         super.init(withToken: token)
     }
+
+    override func formattedText() -> String {
+        return self.title ?? ""
+    }
+
+    override func rawText() -> String {
+        return String(repeating: "*", count: headlineLevel) + " " + (title ?? "")
+    }
 }

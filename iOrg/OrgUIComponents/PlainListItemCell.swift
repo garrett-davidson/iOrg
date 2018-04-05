@@ -11,11 +11,11 @@ import UIKit
 
 class PlainListItemCell: OrgUIComponentCell {
 
-    override func draw(component: OrgComponent) {
+    override func draw(component: OrgComponent, editing: Bool = false) {
         guard let item = component as? PlainListItemComponent else {
             fatalError("Wrong component")
         }
 
-        self.textField.text = item.bullet + " " + (item.contents ?? "")
+        super.draw(component: component, editing: editing)
     }
 }

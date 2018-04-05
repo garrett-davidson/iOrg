@@ -37,6 +37,14 @@ class OrgComponent {
         }
     }
 
+    func formattedText() -> String {
+        return ""
+    }
+
+    func rawText() -> String {
+        return ""
+    }
+
     func getType() -> String {
         return String(describing: type(of: self))
     }
