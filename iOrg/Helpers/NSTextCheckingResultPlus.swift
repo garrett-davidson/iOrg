@@ -21,4 +21,12 @@ extension NSTextCheckingResult {
             return nil
         }
     }
+
+    func match(at range: Int, in string: String) -> String? {
+        if let range = self[range], let substring = string[range] {
+            return String(substring)
+        } else {
+            return nil
+        }
+    }
 }

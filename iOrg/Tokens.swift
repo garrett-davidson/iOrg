@@ -20,7 +20,7 @@ enum Token: Equatable {
     case BeginDynamicBlock(title: String, parameters: String?)
     case EndDynamicBlock
     case BeginFootnote(label: String, contents: String)
-    case PlainListItem(bullet: String, checked: Bool?, tag: String?, contents: String?)
+    case PlainListItem(leadingWhitespace: String, bullet: String, checked: Bool?, tag: String?, contents: String?)
 
     case Line(text: String)
 
@@ -80,8 +80,9 @@ enum Token: Equatable {
             return leftLabel == rightLabel
                 && leftContents == rightContents
 
-        case (let .PlainListItem(leftBullet, leftChecked, leftTag, leftContents), let .PlainListItem(rightBullet, rightChecked, rightTag, rightContents)):
-            return leftBullet == rightBullet
+        case (let .PlainListItem(leftLeadingWhitespace, leftBullet, leftChecked, leftTag, leftContents), let .PlainListItem(rightLeadingWhitespace, rightBullet, rightChecked, rightTag, rightContents)):
+            return leftLeadingWhitespace == rightLeadingWhitespace
+                && leftBullet == rightBullet
                 && leftChecked == rightChecked
                 && leftTag == rightTag
                 && leftContents == rightContents
@@ -246,13 +247,14 @@ struct BeginFootnoteTokenizer: Tokenizer {
 }
 
 struct PlainListItemTokenizer: Tokenizer {
-    static let regex = try! NSRegularExpression(pattern: "^\\s+([*\\-+]|([0-9]+|[A-Za-z])(\\.|\\)))( \\[( |X)\\])?( (.+) ::)?( .+)?$", options: .caseInsensitive)
+    static let regex = try! NSRegularExpression(pattern: "^(\\s+)([*\\-+]|([0-9]+|[A-Za-z])(\\.|\\)))( \\[( |X)\\])?( (.+) ::)?( .+)?$", options: .caseInsensitive)
 
     enum MatchRange: Int {
-        case Bullet = 1
-        case Checkmark = 5
-        case Tag = 7
-        case Contents = 8
+        case LeadingWhitespace = 1
+        case Bullet = 2
+        case Checkmark = 6
+        case Tag = 8
+        case Contents = 9
     }
 
     func tokenFrom(line: String) -> Token? {
@@ -260,6 +262,7 @@ struct PlainListItemTokenizer: Tokenizer {
             return nil
         }
 
+        let leadingWhitespace = matches.match(at: MatchRange.LeadingWhitespace.rawValue, in: line)!
         let bullet = matches.trimmedMatch(at: MatchRange.Bullet.rawValue, in: line)!
 
         let checked: Bool?
@@ -272,6 +275,6 @@ struct PlainListItemTokenizer: Tokenizer {
         let tag = matches.trimmedMatch(at: MatchRange.Tag.rawValue, in: line)
         let contents = matches.trimmedMatch(at: MatchRange.Contents.rawValue, in: line)
 
-        return .PlainListItem(bullet: bullet, checked: checked, tag: tag, contents: contents)
+        return .PlainListItem(leadingWhitespace: leadingWhitespace, bullet: bullet, checked: checked, tag: tag, contents: contents)
     }
 }

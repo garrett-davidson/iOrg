@@ -9,6 +9,7 @@
 import Foundation
 
 class PlainListItemComponent: OrgComponent {
+    var leadingWhitespace: String
     var bullet: String
     var checked: Bool?
     var tag: String?
@@ -17,10 +18,11 @@ class PlainListItemComponent: OrgComponent {
     var formattedBullet = "•"
 
     override init(withToken token: Token) {
-        guard case let .PlainListItem(bullet, checked, tag, contents) = token else {
+        guard case let .PlainListItem(leadingWhitespace, bullet, checked, tag, contents) = token else {
             fatalError("Wrong token type")
         }
 
+        self.leadingWhitespace = leadingWhitespace
         self.bullet = bullet
         self.checked = checked
         self.tag = tag
@@ -34,6 +36,6 @@ class PlainListItemComponent: OrgComponent {
     }
 
     override func rawText() -> String {
-        return bullet + " " + (contents ?? "")
+        return leadingWhitespace + bullet + " " + (contents ?? "")
     }
 }
