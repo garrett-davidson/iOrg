@@ -13,10 +13,17 @@ class DocumentViewController: UIViewController, UITableViewDataSource, UITableVi
     var currentlyEditingIndexPath: IndexPath?
     @IBOutlet weak var tableView: UITableView!
 
+    var doneButton: UIBarButtonItem!
+    var saveButton: UIBarButtonItem!
+
     override func viewDidLoad() {
         tableView.register(HeadlineCell.self, forCellReuseIdentifier: HeadlineComponent.getType())
         tableView.register(LineCell.self, forCellReuseIdentifier: LineComponent.getType())
         tableView.register(PlainListItemCell.self, forCellReuseIdentifier: PlainListItemComponent.getType())
+
+        doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.finishEditing(_:)))
+        saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(self.saveDocument(_:)))
+        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = saveButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,5 +77,31 @@ class DocumentViewController: UIViewController, UITableViewDataSource, UITableVi
         }
 
         cell.textField.becomeFirstResponder()
+        cell.textField.keyboardDismissMode = .onDrag
+        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = doneButton
+    }
+
+    @objc func saveDocument(_ sender: Any) {
+        document!.savePresentedItemChanges { (error) in
+            guard error == nil else {
+                fatalError("Error saving document")
+            }
+        }
+    }
+
+    @objc func finishEditing(_ sender: Any) {
+        guard let currentlyEditingIndexPath = currentlyEditingIndexPath else {
+            fatalError("This button should not be displayed")
+        }
+
+        guard let cell = tableView.cellForRow(at: currentlyEditingIndexPath) as? OrgUIComponentCell else {
+            fatalError("Could not fetch cell")
+        }
+
+        self.currentlyEditingIndexPath = nil
+        cell.textField.resignFirstResponder()
+        tableView.reloadRows(at: [currentlyEditingIndexPath], with: .automatic)
+
+        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = saveButton
     }
 }
