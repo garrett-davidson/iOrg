@@ -52,4 +52,20 @@ class OrgComponent {
     static func getType() -> String {
         return String(describing: self)
     }
+
+    func add(child: OrgComponent) {
+        assert(child.parent == nil)
+
+        if self.children == nil {
+            self.children = [child]
+        } else {
+            self.children!.append(child)
+        }
+
+        child.parent = self
+    }
+
+    func add(parent: OrgComponent) {
+        parent.add(child: self)
+    }
 }

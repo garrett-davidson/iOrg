@@ -10,6 +10,7 @@ import Foundation
 
 class HeadlineComponent: OrgComponent {
     var headlineLevel: Int
+    var todoKeyword: String?
     var priority: Character?
     var isCommented: Bool
     var title: String?
@@ -20,9 +21,8 @@ class HeadlineComponent: OrgComponent {
             fatalError("Wrong token type")
         }
 
-        assert(todoKeyword == nil)
-
         self.headlineLevel = headlineLevel
+        self.todoKeyword = todoKeyword
         self.priority = priority
         self.isCommented = isCommented
         self.title = title
