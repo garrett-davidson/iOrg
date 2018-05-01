@@ -9,5 +9,15 @@
 import Foundation
 
 class TODOComponent: HeadlineComponent {
-    
+    static let doneKeyword = "DONE"
+
+    var isChecked = false
+
+    override func rawText() -> String {
+        return leadingStars() ++ todoKeyword ++ title
+    }
+
+    internal func checkbox() -> String {
+        return isChecked ? "[X]" : "[ ]"
+    }
 }

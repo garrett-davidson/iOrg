@@ -36,6 +36,10 @@ class HeadlineComponent: OrgComponent {
     }
 
     override func rawText() -> String {
-        return String(repeating: "*", count: headlineLevel) + " " + (title ?? "")
+        return leadingStars() ++ title
+    }
+
+    internal func leadingStars() -> String {
+        return String(repeating: "*", count: headlineLevel)
     }
 }

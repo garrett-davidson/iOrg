@@ -8,6 +8,8 @@
 
 import Foundation
 
+infix operator ++: AdditionPrecedence
+
 extension String {
     var range: NSRange {
         get {
@@ -47,6 +49,14 @@ extension String {
         }
 
         return self[newRange]
+    }
+
+    static func ++(lhs: String, rhs: String?) -> String {
+        return lhs + (rhs?.prepending(" ") ?? "")
+    }
+
+    func prepending(_ string: String) -> String {
+        return string + self
     }
 }
 

@@ -39,4 +39,30 @@ class StringPlusTests: XCTestCase {
         output = ""
         XCTAssertEqual(String(testString.dropFirstWord()), output)
     }
+
+    func testPlusPlusOperator() {
+        var testString = "My test string"
+        var output = "My test string"
+        XCTAssertEqual(testString ++ nil, output)
+
+        output = "My test string "
+        XCTAssertEqual(testString ++ "", output)
+
+        output = "My test string  "
+        XCTAssertEqual(testString ++ " ", output)
+
+        output = "My test string 2"
+        XCTAssertEqual(testString ++ "2", output)
+
+        output = "My test string 2 3"
+        XCTAssertEqual(testString ++ "2" ++ "3", output)
+
+        testString = "My"
+        output = "My test string 2"
+        XCTAssertEqual(testString ++ "test" ++ "string" ++ "2", output)
+
+        testString = "My"
+        output = "My test string 2"
+        XCTAssertEqual(testString ++ nil ++ "test" ++ nil ++ nil ++ "string" ++ nil ++ "2" ++ nil, output)
+    }
 }
