@@ -213,53 +213,53 @@ class OrgParserTests: XCTestCase {
 
     func testPlainListItem() {
         var lines = ["   1. Peter Jackson being shot by Legolas"]
-        var token = Token.PlainListItem(bullet: "1.", checked: nil, tag: nil, contents: "Peter Jackson being shot by Legolas")
+        var token = Token.PlainListItem(leadingWhitespace: "", bullet: "1.", checked: nil, tag: nil, contents: "Peter Jackson being shot by Legolas")
         var lexedToken = OrgParser.lex(lines: lines)[0]
         XCTAssertEqual(token, lexedToken)
 
         lines = ["       A. The attack of the Rohirrim"]
-        token = Token.PlainListItem(bullet: "A.", checked: nil, tag: nil, contents: "The attack of the Rohirrim")
+        token = Token.PlainListItem(leadingWhitespace: "", bullet: "A.", checked: nil, tag: nil, contents: "The attack of the Rohirrim")
         lexedToken = OrgParser.lex(lines: lines)[0]
         XCTAssertEqual(token, lexedToken)
 
         lines = ["       b) The attack of the Rohirrim"]
-        token = Token.PlainListItem(bullet: "b)", checked: nil, tag: nil, contents: "The attack of the Rohirrim")
+        token = Token.PlainListItem(leadingWhitespace: "", bullet: "b)", checked: nil, tag: nil, contents: "The attack of the Rohirrim")
         lexedToken = OrgParser.lex(lines: lines)[0]
         XCTAssertEqual(token, lexedToken)
 
         lines = ["       c The attack of the Rohirrim"]
         lexedToken = OrgParser.lex(lines: lines)[0]
-        if case Token.PlainListItem(_, _, _, _) = lexedToken {
+        if case Token.PlainListItem(_, _, _, _, _) = lexedToken {
             XCTFail()
         }
 
         lines = ["      + this was already my favorite scene in the book"]
-        token = Token.PlainListItem(bullet: "+", checked: nil, tag: nil, contents: "this was already my favorite scene in the book")
+        token = Token.PlainListItem(leadingWhitespace: "", bullet: "+", checked: nil, tag: nil, contents: "this was already my favorite scene in the book")
         lexedToken = OrgParser.lex(lines: lines)[0]
         XCTAssertEqual(token, lexedToken)
 
         lines = ["       - on DVD only"]
-        token = Token.PlainListItem(bullet: "-", checked: nil, tag: nil, contents: "on DVD only")
+        token = Token.PlainListItem(leadingWhitespace: "", bullet: "-", checked: nil, tag: nil, contents: "on DVD only")
         lexedToken = OrgParser.lex(lines: lines)[0]
         XCTAssertEqual(token, lexedToken)
 
         lines = ["   - Elijah Wood :: He plays Frodo"]
-        token = Token.PlainListItem(bullet: "-", checked: nil, tag: "Elijah Wood", contents: "He plays Frodo")
+        token = Token.PlainListItem(leadingWhitespace: "", bullet: "-", checked: nil, tag: "Elijah Wood", contents: "He plays Frodo")
         lexedToken = OrgParser.lex(lines: lines)[0]
         XCTAssertEqual(token, lexedToken)
 
         lines = ["    2. [ ] item 2"]
-        token = Token.PlainListItem(bullet: "2.", checked: false, tag: nil, contents: "item 2")
+        token = Token.PlainListItem(leadingWhitespace: "", bullet: "2.", checked: false, tag: nil, contents: "item 2")
         lexedToken = OrgParser.lex(lines: lines)[0]
         XCTAssertEqual(token, lexedToken)
 
         lines = ["    3) [X] item 3"]
-        token = Token.PlainListItem(bullet: "3)", checked: true, tag: nil, contents: "item 3")
+        token = Token.PlainListItem(leadingWhitespace: "", bullet: "3)", checked: true, tag: nil, contents: "item 3")
         lexedToken = OrgParser.lex(lines: lines)[0]
         XCTAssertEqual(token, lexedToken)
 
         lines = ["   - [ ] some tag :: item 2.1"]
-        token = Token.PlainListItem(bullet: "-", checked: false, tag: "some tag", contents: "item 2.1")
+        token = Token.PlainListItem(leadingWhitespace: "", bullet: "-", checked: false, tag: "some tag", contents: "item 2.1")
         lexedToken = OrgParser.lex(lines: lines)[0]
         XCTAssertEqual(token, lexedToken)
     }
