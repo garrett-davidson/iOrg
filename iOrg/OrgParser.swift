@@ -16,9 +16,10 @@ class OrgParser {
     // TODO: Properly handle multiline footnotes https://orgmode.org/worg/dev/org-syntax.html#Footnote_Definitions
     // TODO: Properly handle inline footnotes https://orgmode.org/manual/Footnotes.html
     static func parse(tokens: [Token]) -> [OrgComponent] {
-        var components = [OrgComponent]()
-
         var currentParent = OrgComponent.from(token: Token.Headline(level: 0, todoKeyword: nil, priority: nil, comment: false, title: nil, tags: nil))!
+
+        var components = [currentParent]
+
         for token in tokens {
             guard let newComponent = OrgComponent.from(token: token) else {
                 fatalError("Could not match token")
@@ -43,6 +44,7 @@ class OrgParser {
                         }
 
                         newComponent.add(parent: newComponentParent.parent!)
+                        currentParent = newComponent
                     }
                 } else {
                     fatalError("Not implemented")
