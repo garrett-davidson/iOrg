@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		680BDD232099461E0000A6DF /* TODOCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680BDD222099461E0000A6DF /* TODOCell.swift */; };
 		68739B302061EBD300592BED /* PlainListItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68739B2F2061EBD300592BED /* PlainListItemComponent.swift */; };
 		68739B322061ECDE00592BED /* PlainListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68739B312061ECDE00592BED /* PlainListItemCell.swift */; };
 		688A13A02077D39F0086F74F /* Empty.org in Resources */ = {isa = PBXBuildFile; fileRef = 688A139F2077D39F0086F74F /* Empty.org */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		680BDD222099461E0000A6DF /* TODOCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODOCell.swift; sourceTree = "<group>"; };
 		68739B2F2061EBD300592BED /* PlainListItemComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainListItemComponent.swift; sourceTree = "<group>"; };
 		68739B312061ECDE00592BED /* PlainListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainListItemCell.swift; sourceTree = "<group>"; };
 		688A139F2077D39F0086F74F /* Empty.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = Empty.org; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				68981E1B2060618600D8C040 /* LineCell.swift */,
 				68F4B581205F205400017D9F /* OrgUIComponentCell.swift */,
 				68739B312061ECDE00592BED /* PlainListItemCell.swift */,
+				680BDD222099461E0000A6DF /* TODOCell.swift */,
 			);
 			path = OrgUIComponents;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 			files = (
 				68F4B582205F205400017D9F /* OrgUIComponentCell.swift in Sources */,
 				68981E1C2060618600D8C040 /* LineCell.swift in Sources */,
+				680BDD232099461E0000A6DF /* TODOCell.swift in Sources */,
 				68F4B561205EFA1500017D9F /* ViewController.swift in Sources */,
 				68F4B585205F6EF300017D9F /* OrgComponent.swift in Sources */,
 				68F4B531205EFA0100017D9F /* OrgDocument.swift in Sources */,

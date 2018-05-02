@@ -17,6 +17,12 @@ class TODOComponent: HeadlineComponent {
         return leadingStars() ++ todoKeyword ++ title
     }
 
+    override func formattedText() -> String {
+        // Can't have a TODO component without a TODO keyword
+        // So this should be safe
+        return todoKeyword! ++ title
+    }
+
     internal func checkbox() -> String {
         return isChecked ? "[X]" : "[ ]"
     }

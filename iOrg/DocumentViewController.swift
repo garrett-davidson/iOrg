@@ -20,6 +20,7 @@ class DocumentViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.register(HeadlineCell.self, forCellReuseIdentifier: HeadlineComponent.getType())
         tableView.register(LineCell.self, forCellReuseIdentifier: LineComponent.getType())
         tableView.register(PlainListItemCell.self, forCellReuseIdentifier: PlainListItemComponent.getType())
+        tableView.register(TODOCell.self, forCellReuseIdentifier: TODOComponent.getType())
 
         doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.finishEditing(_:)))
         saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(self.saveDocument(_:)))
