@@ -9,7 +9,11 @@
 import Foundation
 import UIKit
 
-class OrgComponent {
+class OrgComponent: CustomStringConvertible {
+    var description: String {
+        return String(describing: type(of: self)) + ": " + self.rawText()
+    }
+
     weak var parent: OrgComponent?
     var children: [OrgComponent]?
 
@@ -67,5 +71,25 @@ class OrgComponent {
 
     func add(parent: OrgComponent) {
         parent.add(child: self)
+    }
+
+    func printTree(indentation: String = "") {
+        print(indentation + self.description)
+        guard let children = self.children else { return }
+
+        children.forEach({$0.printTree(indentation: indentation + "  ")})
+    }
+
+    func printFullTree() {
+        getRoot().printTree()
+    }
+
+    func getRoot() -> OrgComponent {
+        var parent = self
+        while let p = parent.parent {
+            parent = p
+        }
+
+        return parent
     }
 }
