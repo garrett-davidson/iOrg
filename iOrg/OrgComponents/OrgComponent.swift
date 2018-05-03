@@ -17,7 +17,7 @@ class OrgComponent: CustomStringConvertible {
     }
 
     var description: String {
-        return String(describing: type(of: self)) + ": " + self.rawText()
+        return String(describing: type(of: self)) + ": " + self.rawString()
     }
 
     weak var parent: OrgComponent?
@@ -47,12 +47,24 @@ class OrgComponent: CustomStringConvertible {
         }
     }
 
-    func formattedText() -> String {
-        return ""
+    func formattedText() -> NSAttributedString {
+        fatalError("Don't call me")
     }
 
-    func rawText() -> String {
-        return ""
+    func rawText() -> NSAttributedString {
+        fatalError("Don't call me")
+    }
+
+    func rawString() -> String {
+        fatalError("Don't call me")
+    }
+
+    func attribute(_ string: String) -> NSMutableAttributedString {
+        return self.attribute(NSMutableAttributedString(string: string))
+    }
+
+    func attribute(_ string: NSMutableAttributedString) -> NSMutableAttributedString {
+        return string
     }
 
     func getType() -> String {

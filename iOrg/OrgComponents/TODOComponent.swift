@@ -13,14 +13,18 @@ class TODOComponent: HeadlineComponent {
 
     var isChecked = false
 
-    override func rawText() -> String {
-        return leadingStars() ++ todoKeyword ++ title
+    override func rawText() -> NSAttributedString {
+        return attribute(rawString())
     }
 
-    override func formattedText() -> String {
+    override func rawString() -> String {
+        return leadingStars() ++ todoKeyword ++ title
+    }
+    
+    override func formattedText() -> NSAttributedString {
         // Can't have a TODO component without a TODO keyword
         // So this should be safe
-        return todoKeyword! ++ title
+        return attribute(todoKeyword! ++ title)
     }
 
     internal func checkbox() -> String {

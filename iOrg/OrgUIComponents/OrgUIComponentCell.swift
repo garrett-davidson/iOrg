@@ -14,7 +14,7 @@ class OrgUIComponentCell: UITableViewCell {
 
     func draw(component: OrgComponent, editing: Bool = false) {
         self.textField.isUserInteractionEnabled = editing
-        self.textField.text = editing ? component.rawText() : component.formattedText()
+        self.textField.attributedText = editing ? component.rawText() : component.formattedText()
     }
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

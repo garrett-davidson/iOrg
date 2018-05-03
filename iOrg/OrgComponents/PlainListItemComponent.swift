@@ -31,11 +31,15 @@ class PlainListItemComponent: OrgComponent {
         super.init(withToken: token)
     }
 
-    override func formattedText() -> String {
-        return formattedBullet + " " + (contents ?? "")
+    override func formattedText() -> NSAttributedString {
+        return attribute(formattedBullet + " " + (contents ?? ""))
     }
 
-    override func rawText() -> String {
+    override func rawText() -> NSAttributedString {
+        return attribute(rawString())
+    }
+
+    override func rawString() -> String {
         return leadingWhitespace + bullet + " " + (contents ?? "")
     }
 

@@ -17,7 +17,7 @@ class OrgDocument: UIDocument {
 
     override func contents(forType typeName: String) throws -> Any {
         // Encode your document with an instance of NSData or NSFileWrapper
-        return self.components.map({$0.rawText()}).joined(separator: "\n").data(using: .utf8)!
+        return self.components.map({$0.rawString()}).joined(separator: "\n").data(using: .utf8)!
     }
     
     override func load(fromContents dataContents: Any, ofType typeName: String?) throws {

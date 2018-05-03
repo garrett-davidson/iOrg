@@ -20,11 +20,15 @@ class LineComponent: OrgComponent {
         super.init(withToken: token)
     }
 
-    override func formattedText() -> String {
-        return self.text
+    override func formattedText() -> NSAttributedString {
+        return attribute(self.text)
     }
 
-    override func rawText() -> String {
+    override func rawText() -> NSAttributedString {
+        return attribute(rawString())
+    }
+
+    override func rawString() -> String {
         return self.text
     }
 

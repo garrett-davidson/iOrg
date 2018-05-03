@@ -29,13 +29,18 @@ class HeadlineComponent: OrgComponent {
         self.tags = tags
 
         super.init(withToken: token)
+        self.height = self.fontSize * 1.5
     }
 
-    override func formattedText() -> String {
-        return self.title ?? ""
+    override func formattedText() -> NSAttributedString {
+        return attribute(self.title ?? "")
     }
 
-    override func rawText() -> String {
+    override func rawText() -> NSAttributedString {
+        return attribute(rawString())
+    }
+
+    override func rawString() -> String {
         return leadingStars() ++ title
     }
 
