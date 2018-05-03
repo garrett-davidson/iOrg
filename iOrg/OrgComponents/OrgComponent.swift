@@ -79,6 +79,24 @@ class OrgComponent: CustomStringConvertible {
         parent.add(child: self)
     }
 
+    func insert(child: OrgComponent, at index: Int = 0) {
+        assert(child.parent == nil)
+
+        if self.children == nil {
+            self.children = [child]
+        } else {
+            self.children!.insert(child, at: index)
+        }
+
+        child.parent = self
+    }
+
+    @discardableResult func insert(child: OrgComponent, after sibling: OrgComponent) -> Bool {
+        child.parent = self
+
+        return self.children!.insert(child, after: sibling)
+    }
+
     func printTree(indentation: String = "") {
         print(indentation + self.description)
         guard let children = self.children else { return }
