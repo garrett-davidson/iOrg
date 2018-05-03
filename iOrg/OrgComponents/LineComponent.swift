@@ -27,4 +27,12 @@ class LineComponent: OrgComponent {
     override func rawText() -> String {
         return self.text
     }
+
+    override func relation(to otherComponent: OrgComponent) -> OrgComponent.TreeRelation {
+        if otherComponent is HeadlineComponent {
+            return .Progeny
+        }
+
+        fatalError("Not implemented")
+    }
 }

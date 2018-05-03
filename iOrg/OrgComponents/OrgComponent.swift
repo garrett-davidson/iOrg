@@ -10,6 +10,12 @@ import Foundation
 import UIKit
 
 class OrgComponent: CustomStringConvertible {
+    enum TreeRelation {
+        case Ancestor
+        case Progeny
+        case SameGeneration
+    }
+
     var description: String {
         return String(describing: type(of: self)) + ": " + self.rawText()
     }
@@ -91,5 +97,9 @@ class OrgComponent: CustomStringConvertible {
         }
 
         return parent
+    }
+
+    func relation(to otherComponent: OrgComponent) -> TreeRelation {
+        fatalError("Override me")
     }
 }

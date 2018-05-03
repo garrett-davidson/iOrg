@@ -42,4 +42,26 @@ class HeadlineComponent: OrgComponent {
     internal func leadingStars() -> String {
         return String(repeating: "*", count: headlineLevel)
     }
+
+    override func relation(to otherComponent: OrgComponent) -> OrgComponent.TreeRelation {
+        if let otherHeadline = otherComponent as? HeadlineComponent {
+            let currentHeadlineLevel = self.headlineLevel
+            let otherHeadlineLevel = otherHeadline.headlineLevel
+            if currentHeadlineLevel == otherHeadlineLevel {
+                return .SameGeneration
+            } else if currentHeadlineLevel < otherHeadlineLevel {
+                return .Ancestor
+            } else {
+                return .Progeny
+            }
+        } else {
+            if otherComponent is PlainListItemComponent {
+                return .Progeny
+            } else if otherComponent is LineComponent {
+                return .Ancestor
+            }
+
+            fatalError("Not implemented")
+        }
+    }
 }

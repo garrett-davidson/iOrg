@@ -38,4 +38,26 @@ class PlainListItemComponent: OrgComponent {
     override func rawText() -> String {
         return leadingWhitespace + bullet + " " + (contents ?? "")
     }
+
+    override func relation(to otherComponent: OrgComponent) -> OrgComponent.TreeRelation {
+        guard let otherPlainListItem = otherComponent as? PlainListItemComponent else {
+            if otherComponent is HeadlineComponent {
+                return .Progeny
+            } else if otherComponent is LineComponent {
+                return .Ancestor
+            }
+
+            fatalError("Not implemented")
+        }
+        let currentLeadingWhitespace = self.leadingWhitespace
+        let otherLeadingWhitespace = otherPlainListItem.leadingWhitespace
+
+        if currentLeadingWhitespace.count == otherLeadingWhitespace.count {
+            return .SameGeneration
+        } else if currentLeadingWhitespace.count > otherLeadingWhitespace.count {
+            return .Progeny
+        } else {
+            return .Ancestor
+        }
+    }
 }
