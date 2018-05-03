@@ -10,19 +10,4 @@ import Foundation
 import UIKit
 
 class HeadlineCell: OrgUIComponentCell {
-    static let headlineFont = UIFont.boldSystemFont(ofSize: 40)
-    static let headlineDefaultFontSize = 40
-    static let headlineLevelFontSizeMultiplier = 7
-
-    override func draw(component: OrgComponent, editing: Bool = false) {
-        guard let headline = component as? HeadlineComponent else {
-            fatalError("Wrong component")
-        }
-
-        let fontSize = CGFloat(HeadlineCell.headlineDefaultFontSize - (headline.headlineLevel * HeadlineCell.headlineLevelFontSizeMultiplier))
-        headline.height = fontSize * 1.5
-        self.textField.font = HeadlineCell.headlineFont.withSize(fontSize)
-
-        super.draw(component: component, editing: editing)
-    }
 }

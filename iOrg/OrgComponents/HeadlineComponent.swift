@@ -7,14 +7,20 @@
 //
 
 import Foundation
+import UIKit
 
 class HeadlineComponent: OrgComponent {
+    static let headlineFont = UIFont.boldSystemFont(ofSize: 40)
+    static let headlineDefaultFontSize = 40
+    static let headlineLevelFontSizeMultiplier = 7
+
     var headlineLevel: Int
     var todoKeyword: String?
     var priority: Character?
     var isCommented: Bool
     var title: String?
     var tags: [String]?
+    var fontSize: CGFloat
 
     override init(withToken token: Token) {
         guard case let .Headline(headlineLevel, todoKeyword, priority, isCommented, title, tags) = token else {
@@ -27,6 +33,8 @@ class HeadlineComponent: OrgComponent {
         self.isCommented = isCommented
         self.title = title
         self.tags = tags
+
+        self.fontSize = CGFloat(HeadlineComponent.headlineDefaultFontSize - (self.headlineLevel * HeadlineComponent.headlineLevelFontSizeMultiplier))
 
         super.init(withToken: token)
         self.height = self.fontSize * 1.5
@@ -42,6 +50,12 @@ class HeadlineComponent: OrgComponent {
 
     override func rawString() -> String {
         return leadingStars() ++ title
+    }
+
+    override func attribute(_ string: NSMutableAttributedString) -> NSMutableAttributedString {
+        string.addAttribute(.font, value: HeadlineComponent.headlineFont.withSize(self.fontSize), range: string.string.range)
+
+        return string
     }
 
     internal func leadingStars() -> String {
