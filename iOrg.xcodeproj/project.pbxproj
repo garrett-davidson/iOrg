@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		680BDD232099461E0000A6DF /* TODOCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680BDD222099461E0000A6DF /* TODOCell.swift */; };
+		680BDD25209A81C70000A6DF /* ArrayPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680BDD24209A81C70000A6DF /* ArrayPlus.swift */; };
 		68739B302061EBD300592BED /* PlainListItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68739B2F2061EBD300592BED /* PlainListItemComponent.swift */; };
 		68739B322061ECDE00592BED /* PlainListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68739B312061ECDE00592BED /* PlainListItemCell.swift */; };
 		688A13A02077D39F0086F74F /* Empty.org in Resources */ = {isa = PBXBuildFile; fileRef = 688A139F2077D39F0086F74F /* Empty.org */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		680BDD222099461E0000A6DF /* TODOCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODOCell.swift; sourceTree = "<group>"; };
+		680BDD24209A81C70000A6DF /* ArrayPlus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayPlus.swift; sourceTree = "<group>"; };
 		68739B2F2061EBD300592BED /* PlainListItemComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainListItemComponent.swift; sourceTree = "<group>"; };
 		68739B312061ECDE00592BED /* PlainListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainListItemCell.swift; sourceTree = "<group>"; };
 		688A139F2077D39F0086F74F /* Empty.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = Empty.org; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 		68F4B56B205EFFAE00017D9F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				680BDD24209A81C70000A6DF /* ArrayPlus.swift */,
 				68F4B56C205EFFAE00017D9F /* NSTextCheckingResultPlus.swift */,
 				68F4B56D205EFFAE00017D9F /* StringPlus.swift */,
 			);
@@ -368,6 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				68F4B582205F205400017D9F /* OrgUIComponentCell.swift in Sources */,
+				680BDD25209A81C70000A6DF /* ArrayPlus.swift in Sources */,
 				68981E1C2060618600D8C040 /* LineCell.swift in Sources */,
 				680BDD232099461E0000A6DF /* TODOCell.swift in Sources */,
 				68F4B561205EFA1500017D9F /* ViewController.swift in Sources */,
