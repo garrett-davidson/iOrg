@@ -97,15 +97,15 @@ class OrgComponent: CustomStringConvertible {
         return self.children!.insert(child, after: sibling)
     }
 
-    func printTree(indentation: String = "") {
-        print(indentation + self.description)
-        guard let children = self.children else { return }
+    func describeTree(indentation: String = "") -> String {
+        let description = indentation + self.description
+        guard let children = self.children else { return description }
 
-        children.forEach({$0.printTree(indentation: indentation + "  ")})
+        return ([description] + children.map({$0.describeTree(indentation: indentation + "  ")})).joined(separator: "\n")
     }
 
-    func printFullTree() {
-        getRoot().printTree()
+    func describeFullTree() -> String {
+        return getRoot().describeTree()
     }
 
     func getRoot() -> OrgComponent {

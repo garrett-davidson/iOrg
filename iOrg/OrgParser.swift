@@ -36,24 +36,24 @@ class OrgParser {
         switch newComponent.relation(to: currentComponent) {
         case .Ancestor:
             guard let sibling = currentComponent.parent, let parent = sibling.parent else {
-                currentComponent.printFullTree()
+                print(currentComponent.describeFullTree())
                 fatalError("Tree is broken")
             }
 
             guard parent.insert(child: newComponent, after: sibling) else {
-                sibling.printFullTree()
+                print(sibling.describeFullTree())
                 fatalError("Tree is probably broken")
             }
         case .Progeny:
             currentComponent.insert(child: newComponent)
         case .SameGeneration:
             guard let parent = currentComponent.parent else {
-                currentComponent.printFullTree()
+                print(currentComponent.describeFullTree())
                 fatalError("Tree is broken")
             }
 
             guard parent.insert(child: newComponent, after: currentComponent) else {
-                currentComponent.printFullTree()
+                print(currentComponent.describeFullTree())
                 fatalError("Tree is probably broken")
             }
         }
